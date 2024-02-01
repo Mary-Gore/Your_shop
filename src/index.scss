@@ -1,0 +1,11 @@
+/* base imports */
+@import "./vars";
+//@import "./fonts";
+@import "./settings";
+
+/* import big components */
+@import "./App.scss";
+
+/* import small components */
+@import "./components/TopBar/TopBar";
+

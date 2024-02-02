@@ -1,0 +1,66 @@
+.top-bar {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E5EBEB;
+
+  &__login {
+    margin-left: auto;
+  }
+
+  &__location-btn {
+    margin-right: 40px;
+    padding: 5px 0 5px 18px;
+    border-bottom: 1px dashed $darkGray;
+    background: url('../../icons/iconGeo.svg') no-repeat left 40%;
+    font: $mainText;
+  }
+
+  .search-form-wrap {
+    position: relative;
+    height: 25px;
+  }
+
+  .search-form {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    top: 3px;
+ 
+    &__input {
+      padding: 0;
+      transition: all 0.5s;
+      width: 0;
+      opacity: 0;
+      border-radius: 40px;
+      border: 2px solid $iconsGray;
+      font: 400 12px/1 Lato, sans-serif;
+
+      &::placeholder {
+        color: #AFB8BA;
+        font: 400 12px/1 Lato, sans-serif;
+      }
+    }
+
+    &__btn {
+      margin-right: 8px;
+      background: url('../../icons/iconSearch.svg') no-repeat center;
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+      font: $mainText;
+    }
+
+    &:hover .search-form__input {
+      padding: 0 10px;
+      opacity: 1;
+      width: 240px;
+      border: 2px solid $iconsGray;
+    }
+  }
+
+  &__sign-in-btn {
+    color: $lightGrayText;
+    font: $mainText;
+  }
+ }

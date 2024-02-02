@@ -3,4 +3,15 @@
   $container-offset: 30px;
   $container-tab-offset: 20px;
   $container-mob-offset: 15px;
-  $container-width: calc($content-width + ($container-offset * 2));
+  $container-width: calc(#{$content-width} + ( #{$container-offset} * 2));
+
+  // colors
+  $darkGray: #333333;
+  $iconsGray: #D1DBDD;
+  $lightGrayText: #BECCCE;
+  $accent: #01AB8D;
+
+  // fonts
+  $mainText: 500 16px/1 Lato, sans-serif;
+
+

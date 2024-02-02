@@ -1,0 +1,12 @@
+.extra-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.extra-menu li {
+  font: 500 18px/1 Lato, sans-serif;
+}
+
+.extra-menu li:not(:last-child) {
+  margin-right: 45px;
+}

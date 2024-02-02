@@ -1,11 +1,15 @@
 /* base imports */
 @import "./vars";
-//@import "./fonts";
+@import "./fonts";
 @import "./settings";
 
 /* import big components */
-@import "./App.scss";
+@import "./App";
+@import "./components/Header/Header";
 
 /* import small components */
 @import "./components/TopBar/TopBar";
+@import "./components/MainMenu/MainMenu";
+@import "./components/ExtraMenu/ExtraMenu";
+@import "./components/UI/CartFavoriteBtns/CartFavoriteBtns";
 

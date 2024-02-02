@@ -1,0 +1,26 @@
+.main-menu {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    font: 600 16px/1 Lato, sans-serif;
+    text-transform: uppercase;
+    color: $darkGray;
+    padding: 10px 0;
+
+    &:not(:last-child) {
+      margin-right: 70px;
+    }
+
+    &:visited {
+      color: $darkGray;
+    }
+
+    &_active {
+      border-bottom: 4px solid $accent;
+    }
+  }
+}
+
+

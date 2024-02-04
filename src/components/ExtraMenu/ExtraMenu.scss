@@ -1,12 +1,17 @@
 .extra-menu {
   display: flex;
   justify-content: center;
-}
 
-.extra-menu li {
-  font: 500 18px/1 Lato, sans-serif;
-}
+  &__link {
+    font: 500 18px/1 Lato, sans-serif;
+    color: $lightGrayText;
 
-.extra-menu li:not(:last-child) {
-  margin-right: 45px;
+    &:not(:last-child) {
+      margin-right: 45px;
+    }
+
+    &_active {
+      color: $darkGray;
+    }
+  }
 }

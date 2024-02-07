@@ -1,14 +1,22 @@
 .cart-btns {
+  display: flex;
+  align-items: flex-end;
+
   &__favorite-icon {
     margin-right: 15px;
+    fill: none;
     width: 25px;
-    height: 21px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__cart-icon {
     color: $iconsGray;
-    width: 23px;
-    height: auto;
+    width: 21px;
+    height: 24px;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -16,5 +24,3 @@
     }
   }
 }
-
-

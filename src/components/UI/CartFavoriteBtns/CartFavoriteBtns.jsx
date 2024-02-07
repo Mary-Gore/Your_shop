@@ -1,12 +1,11 @@
-import { VscHeart } from 'react-icons/vsc';
-//import { VscHeartFilled } from "react-icons/vsc";
-import { LiaShoppingBagSolid } from 'react-icons/lia';
+import { ReactComponent as IconCart } from '../../../icons/iconCart.svg';
+import IconFav from '../IconFav/IconFav';
 
 const CartFavoriteBtns = () => {
   return (
     <div className="cart-btns">
-      <VscHeart className="cart-btns__favorite-icon favorite-icon" />
-      <LiaShoppingBagSolid className="cart-btns__cart-icon" />
+      <IconFav className="cart-btns__favorite-icon" />
+      <IconCart className="cart-btns__cart-icon" />
     </div>
   );
 };

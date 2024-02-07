@@ -3,7 +3,8 @@
     {
       "vendor": 245,
       "title": "Джинсовая куртка Befree",
-      "img": "../img/products/prod1.jpg",
+      "img": "prod1.jpg",
+      "preview": "prod1-small.jpg",
       "brand": "Befree",
       "category": "clothes",
       "subcategory": "jeans jackets",
@@ -17,7 +18,8 @@
     {
       "vendor": 246,
       "title": "Джинсовая куртка Zolla",
-      "img": "../img/products/prod2.jpg",
+      "img": "prod2.jpg",
+      "preview": "prod2-small.jpg",
       "brand": "Zolla",
       "category": "clothes",
       "subcategory": "jeans jackets",
@@ -25,12 +27,13 @@
       "colors": ["blue", "black"],
       "sizes": ["XS", "S", "M"],
       "price": 1699,
-      "count": 170,
+      "count": 170
     },
     {
       "vendor": 247,
       "title": "Джинсовая куртка Oodji",
-      "img": "../img/products/prod3.jpg",
+      "img": "prod3.jpg",
+      "preview": "prod3-small.jpg",
       "brand": "Oodji",
       "category": "clothes",
       "subcategory": "jeans jackets",
@@ -44,7 +47,8 @@
     {
       "vendor": 248,
       "title": "Джинсовая куртка Zolla",
-      "img": "../img/products/prod4.jpg",
+      "img": "prod4.jpg",
+      "preview": "prod4-small.jpg",
       "brand": "Zolla",
       "category": "clothes",
       "subcategory": "jeans jackets",
@@ -57,7 +61,8 @@
     {
       "vendor": 249,
       "title": "Джинсовая куртка Love republic",
-      "img": "../img/products/prod5.jpg",
+      "img": "prod5.jpg",
+      "preview": "prod5-small.jpg",
       "brand": "Love republic",
       "category": "clothes",
       "subcategory": "jeans jackets",
@@ -71,20 +76,23 @@
     {
       "vendor": 250,
       "title": "Джинсовая куртка Love republic",
-      "img": "../img/products/prod6.jpg",
+      "img": "prod6.jpg",
+      "preview": "prod6-small.jpg",
       "brand": "Love republic",
       "category": "clothes",
       "subcategory": "jeans jackets",
       "gender": "women",
       "colors": ["blue", "brown"],
       "sizes": ["S", "M"],
-      "price": 2999,
+      "price": 1799,
+      "oldPrice": 2999,
       "count": 135
     },
     {
       "vendor": 265,
       "title": "Зимняя куртка Norway",
-      "img": "../img/products/prod7.jpg",
+      "img": "prod7.jpg",
+      "preview": "prod7-small.jpg",
       "brand": "Norway",
       "category": "clothes",
       "subcategory": "outerwear",
@@ -92,12 +100,14 @@
       "colors": ["black", "green", "brown"],
       "sizes": ["S", "M", "L"],
       "price": 5999,
-      "count": 157
+      "count": 157,
+      "actual": "new"
     },
     {
       "vendor": 266,
       "title": "Куртка облегчённая OSTIN",
-      "img": "../img/products/prod8.jpg",
+      "img": "prod8.jpg",
+      "preview": "prod8-small.jpg",
       "brand": "OSTIN",
       "category": "clothes",
       "subcategory": "outerwear",
@@ -110,7 +120,8 @@
     {
       "vendor": 267,
       "title": "Куртка зимняя OSTIN",
-      "img": "../img/products/prod9.jpg",
+      "img": "prod9.jpg",
+      "preview": "prod9-small.jpg",
       "brand": "OSTIN",
       "category": "clothes",
       "subcategory": "outerwear",
@@ -121,9 +132,10 @@
       "count": 162
     },
     {
-      "vendor": 267,
+      "vendor": 268,
       "title": "Куртка зимняя Norway",
-      "img": "../img/products/prod10.jpg",
+      "img": "prod10.jpg",
+      "preview": "prod10-small.jpg",
       "brand": "Norway",
       "category": "clothes",
       "subcategory": "outerwear",
@@ -136,20 +148,23 @@
     {
       "vendor": 275,
       "title": "Кросовки мужские",
-      "img": "../img/products/prod11.jpg",
+      "img": "prod11.jpg",
+      "preview": "prod11-small.jpg",
       "brand": "Спортмастер",
       "category": "shoes",
       "subcategory": "sneakers",
       "gender": "men",
       "colors": ["grey", "black"],
       "sizes": [42, 43, 44, 45],
-      "price": 2999,
+      "price": 1899,
+      "oldPrice": 2999,
       "count": 144
     },
     {
       "vendor": 276,
       "title": "Кросовки мужские",
-      "img": "../img/products/prod12.jpg",
+      "img": "prod12.jpg",
+      "preview": "prod12-small.jpg",
       "brand": "Спортмастер",
       "category": "shoes",
       "subcategory": "sneakers",
@@ -162,7 +177,8 @@
     {
       "vendor": 277,
       "title": "Ботинки мужские демисезон",
-      "img": "../img/products/prod13.jpg",
+      "img": "prod13.jpg",
+      "preview": "prod13-small.jpg",
       "brand": "Kari",
       "category": "shoes",
       "subcategory": "boots",
@@ -175,7 +191,8 @@
     {
       "vendor": 278,
       "title": "Ботинки мужские зимние",
-      "img": "../img/products/prod14.jpg",
+      "img": "prod14.jpg",
+      "preview": "prod14-small.jpg",
       "brand": "Kari",
       "category": "shoes",
       "subcategory": "boots",
@@ -188,7 +205,8 @@
     {
       "vendor": 285,
       "title": "Туфли женские Kari",
-      "img": "../img/products/prod15.jpg",
+      "img": "prod15.jpg",
+      "preview": "prod15-small.jpg",
       "brand": "Kari",
       "category": "shoes",
       "subcategory": "womens shoes",
@@ -196,12 +214,14 @@
       "colors": ["red"],
       "sizes": [36, 38, 41],
       "price": 2999,
-      "count": 162
+      "count": 162,
+      "actual": "new"
     },
     {
       "vendor": 286,
       "title": "Туфли женские Unichel",
-      "img": "../img/products/prod15.jpg",
+      "img": "prod16.jpg",
+      "preview": "prod16-small.jpg",
       "brand": "Unichel",
       "category": "shoes",
       "subcategory": "womens shoes",
@@ -214,7 +234,8 @@
     {
       "vendor": 287,
       "title": "Босоножки Unichel",
-      "img": "../img/products/prod16.jpg",
+      "img": "prod17.jpg",
+      "preview": "prod17-small.jpg",
       "brand": "Unichel",
       "category": "shoes",
       "subcategory": "womens sandals",
@@ -225,9 +246,10 @@
       "count": 122
     },
     {
-      "vendor": 287,
+      "vendor": 288,
       "title": "Босоножки Kari",
-      "img": "../img/products/prod17.jpg",
+      "img": "prod18.jpg",
+      "preview": "prod18-small.jpg",
       "brand": "Kari",
       "category": "shoes",
       "subcategory": "womens sandals",
@@ -240,7 +262,8 @@
     {
       "vendor": 295,
       "title": "Браслет женский (позолота)",
-      "img": "../img/products/prod18.jpg",
+      "img": "prod19.jpg",
+      "preview": "prod19-small.jpg",
       "brand": "Sunlight",
       "category": "accessories",
       "subcategory": "womens accessories",
@@ -248,12 +271,14 @@
       "colors": ["gold"],
       "sizes": ["one size"],
       "price": 1199,
-      "count": 78
+      "count": 78,
+      "actual": "new"
     },
     {
       "vendor": 296,
       "title": "Браслет мужской",
-      "img": "../img/products/prod20.jpg",
+      "img": "prod20.jpg",
+      "preview": "prod20-small.jpg",
       "brand": "Sunlight",
       "category": "accessories",
       "subcategory": "mens accessories",
@@ -266,7 +291,8 @@
     {
       "vendor": 297,
       "title": "Серьги женские \"Цветы\"",
-      "img": "../img/products/prod21.jpg",
+      "img": "prod21.jpg",
+      "preview": "prod21-small.jpg",
       "brand": "Sokolov",
       "category": "accessories",
       "subcategory": "womens accessories",
@@ -274,12 +300,14 @@
       "colors": ["pink"],
       "sizes": ["one size"],
       "price": 799,
+      "oldPrice": 1199,
       "count": 126
     },
     {
       "vendor": 298,
       "title": "Брошь \"Цветы\"",
-      "img": "../img/products/prod22.jpg",
+      "img": "prod22.jpg",
+      "preview": "prod22-small.jpg",
       "brand": "Sokolov",
       "category": "accessories",
       "subcategory": "womens accessories",
@@ -292,7 +320,8 @@
     {
       "vendor": 299,
       "title": "Серьги детские \"Kitty\"",
-      "img": "../img/products/prod23.jpg",
+      "img": "prod23.jpg",
+      "preview": "prod23-small.jpg",
       "brand": "Sokolov",
       "category": "accessories",
       "subcategory": "womens accessories",
@@ -301,6 +330,6 @@
       "sizes": ["one size"],
       "price": 499,
       "count": 126
-    },
+    }
   ]
 }

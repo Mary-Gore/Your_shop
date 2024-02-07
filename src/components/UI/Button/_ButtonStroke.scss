@@ -1,0 +1,17 @@
+.btn-stroke {
+  padding: 8px 0 10px;
+  border: 2px solid $accent;
+  font: $btnText;
+  min-width: 168px;
+  color: $accent;
+
+  &:hover {
+    background-color: $accent;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: $strokeBtnActive;
+    border-color: $strokeBtnActive;
+  }
+}

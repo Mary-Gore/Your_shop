@@ -115,13 +115,29 @@ legend {
 
 /* UI */
 
-.favorite-icon {
-  color: $iconsGray;
-  transition: transform 0.3s ease;
+.preloader {
+  animation: preloader 1s infinite linear;
+  color: #83e7d4;
+}
 
-  &:hover {
-    transform: scale(1.2);
+@keyframes preloader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
 
+.color-icon {
+  &_white {
+    border: 1px solid $iconsGray;
+    border-radius: 50%;
+  }
+}
 
+.new-icon {
+  position: absolute;
+  z-index: 10;
+}

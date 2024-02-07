@@ -6,10 +6,12 @@
 /* import big components */
 @import "./App";
 @import "./components/Header/Header";
+@import "./components/Products/Products";
 
 /* import small components */
 @import "./components/TopBar/TopBar";
 @import "./components/MainMenu/MainMenu";
 @import "./components/ExtraMenu/ExtraMenu";
 @import "./components/UI/CartFavoriteBtns/CartFavoriteBtns";
-
+@import "./components/UI/Button/ButtonStroke";
+@import "./components/UI/iconFav/IconFav";

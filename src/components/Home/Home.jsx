@@ -1,4 +1,4 @@
-import Products from '../Products/Products';
+import Products from '../../features/Products/Products';
 
 const Home = () => {
   return (

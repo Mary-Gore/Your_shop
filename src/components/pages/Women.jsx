@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import ExtraMenu from '../ExtraMenu/ExtraMenu';
+import Products from '../../features/Products/Products';
 
 const Women = () => {
   return (
     <div>
-      <h1>Women page</h1>
       <ExtraMenu category="women" />
       <Outlet />
+      <Products />
     </div>
   );
 };

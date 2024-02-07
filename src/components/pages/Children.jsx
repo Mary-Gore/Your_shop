@@ -1,7 +1,13 @@
+import { Outlet } from 'react-router-dom';
+import ExtraMenu from '../ExtraMenu/ExtraMenu';
+import Products from '../../features/Products/Products';
+
 const Children = () => {
   return (
     <div>
-      <h1> Children page</h1>;
+      <ExtraMenu />
+      <Outlet />
+      <Products />
     </div>
   );
 };

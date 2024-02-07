@@ -1,22 +1,23 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+//react icons
 import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
-import {
-  selectProducts,
-  selectIsLoading,
-  fetchProds,
-  toggleFavorite,
-} from '../Products/ProductsSlice';
-import ButtonStroke from '../UI/Button/ButtonStroke';
+
+import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
+import { selectCategory } from '../filter/filterSlice';
+import ButtonStroke from '../../components/UI/Button/ButtonStroke';
+
+//my icons
 import newIcon from '../../icons/iconNew.svg';
-import IconFav from '../UI/IconFav/IconFav';
+import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 
 const Products = () => {
-  let products = useSelector(selectProducts);
-
+  const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
+  const category = useSelector(selectCategory);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,12 +32,14 @@ const Products = () => {
     dispatch(toggleFavorite(vendor));
   };
 
+  const filteredProds = products.filter(product => product.audience === category);
+
   return (
     <div className="products">
-      <h1> {/*Скрыть для SEO */} Products</h1>
+      {/*Оставить для SEO скрытым через стиди <h1>Products</h1> */}
       {isLoading && <BiLoaderAlt className="preloader" />}
       <ul className="products__list">
-        {products.map(prod => (
+        {filteredProds.map(prod => (
           <li className="products__item" key={prod.vendor}>
             <span className="favorite-icon-wrap" onClick={() => handleToggleFavorite(prod.vendor)}>
               {prod.isFavorite ? (

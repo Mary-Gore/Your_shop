@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
-import { selectProducts, selectIsLoading, fetchProds } from '../Products/ProductsSlice';
+import {
+  selectProducts,
+  selectIsLoading,
+  fetchProds,
+  toggleFavorite,
+} from '../Products/ProductsSlice';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import newIcon from '../../icons/iconNew.svg';
 import IconFav from '../UI/IconFav/IconFav';
@@ -10,7 +15,6 @@ import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 
 const Products = () => {
   let products = useSelector(selectProducts);
-  products = products.map(prod => ({ ...prod, isFavorite: false }));
 
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
@@ -22,7 +26,11 @@ const Products = () => {
       ),
     );
   }, []);
-  console.log('products: ', products);
+
+  const handleToggleFavorite = vendor => {
+    dispatch(toggleFavorite(vendor));
+  };
+
   return (
     <div className="products">
       <h1> {/*Скрыть для SEO */} Products</h1>
@@ -30,13 +38,14 @@ const Products = () => {
       <ul className="products__list">
         {products.map(prod => (
           <li className="products__item" key={prod.vendor}>
-            <span className="favorite-icon-wrap">
+            <span className="favorite-icon-wrap" onClick={() => handleToggleFavorite(prod.vendor)}>
               {prod.isFavorite ? (
-                <IconFavFill />
+                <IconFavFill className="products__favorite-icon_fill favorite-icon_fill" />
               ) : (
                 <IconFav className="products__favorite-icon favorite-icon" />
               )}
             </span>
+
             <div className="products__img-wrap">
               <img src={`./img/products/${prod.preview}`} alt="product img" />
             </div>

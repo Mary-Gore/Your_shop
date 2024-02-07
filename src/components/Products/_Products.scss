@@ -61,13 +61,20 @@
 
   &__favorite-icon {
     width: 28px;
-    height: 23px;
+    height: 22px;
     fill: none;
 
     &:hover {
       fill: $favoriteHover;
       stroke: $favoriteHover;
     }
+  }
+
+  &__favorite-icon_fill {
+    width: 28px;
+    height: 22px;
+    fill: $favoriteHover;
+    stroke: $favoriteHover;
   }
 
   &__old-price {

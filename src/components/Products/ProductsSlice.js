@@ -9,6 +9,7 @@ export const fetchProds = createAsyncThunk('products/fetchProds', async (url, th
   try {
     const res = await fetch(url);
     let data = await res.json();
+    data = data.map(item => ({ ...item, isFavorite: false }));
     return data;
   } catch (error) {
     console.log(error);
@@ -18,7 +19,13 @@ export const fetchProds = createAsyncThunk('products/fetchProds', async (url, th
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleFavorite: (state, action) => {
+      state.products.forEach(prod => {
+        if (prod.vendor === action.payload) prod.isFavorite = !prod.isFavorite;
+      });
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchProds.pending, state => {
       state.isLoading = true;
@@ -29,7 +36,7 @@ const productsSlice = createSlice({
       state.isLoading = false;
     });
 
-    builder.addCase(fetchProds.rejected, (state, action) => {
+    builder.addCase(fetchProds.rejected, state => {
       state.isLoading = false;
     });
   },
@@ -37,6 +44,9 @@ const productsSlice = createSlice({
 
 // Reducer
 export default productsSlice.reducer;
+
+//Actions
+export const { toggleFavorite } = productsSlice.actions;
 
 // Selectors
 export const selectProducts = state => state.products.products;

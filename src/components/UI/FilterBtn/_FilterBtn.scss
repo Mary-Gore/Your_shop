@@ -1,0 +1,11 @@
+.filter-btn {
+  color: $lightGrayText;
+  font: 500 16px/1 Lato, sans-serif;
+
+  .filter-icon {
+    margin-right: 5px;
+    width: 13px;
+    height: 11px;
+    fill: $iconsGray;
+  }
+}

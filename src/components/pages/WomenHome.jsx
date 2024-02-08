@@ -1,12 +1,12 @@
 import Products from '../../features/Products/Products';
 
-const Home = () => {
+const WomenHome = () => {
   return (
     <>
+      <h1>Women Home</h1>
       <Products />
-      <h1>Home page</h1>
     </>
   );
 };
 
-export default Home;
+export default WomenHome;

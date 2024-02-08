@@ -6,7 +6,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
 
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
-import { selectCategory } from '../filter/filterSlice';
+import { selectCategory, selectProdCategory } from '../filter/filterSlice';
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
 
 //my icons
@@ -18,6 +18,7 @@ const Products = () => {
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
   const category = useSelector(selectCategory);
+  const prodCategory = useSelector(selectProdCategory);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,7 +33,12 @@ const Products = () => {
     dispatch(toggleFavorite(vendor));
   };
 
-  const filteredProds = products.filter(product => product.audience === category);
+  const filteredProds = products.filter(product => {
+    const audienceFilter = category !== '' ? product.audience === category : product;
+    const prodCatFilter = prodCategory !== '' ? product.category === prodCategory : product;
+
+    return audienceFilter && prodCatFilter;
+  });
 
   return (
     <div className="products">
@@ -50,7 +56,7 @@ const Products = () => {
             </span>
 
             <div className="products__img-wrap">
-              <img src={`./img/products/${prod.preview}`} alt="product img" />
+              <img src={`/img/products/${prod.preview}`} alt="product img" />
             </div>
 
             {prod.actual === 'new' && (

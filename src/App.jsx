@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Home from './components/Home/Home';
+import Home from './components/pages/Home';
 import Women from './components/pages/Women';
+import WomenHome from './components/pages/WomenHome';
 import Men from './components/pages/Men';
 import Children from './components/pages/Children';
 import Clothes from './components/pages/Clothes';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="women" element={<Women />}>
+              <Route index element={<WomenHome />} />
               <Route path="clothes" element={<Clothes />} />
               <Route path="shoes" element={<Shoes />} />
               <Route path="accessories" element={<Accessories />} />
@@ -28,7 +30,11 @@ function App() {
               <Route path="shoes" element={<Shoes />} />
               <Route path="accessories" element={<Accessories />} />
             </Route>
-            <Route path="children" element={<Children />} />
+            <Route path="children" element={<Children />}>
+              <Route path="clothes" element={<Clothes />} />
+              <Route path="shoes" element={<Shoes />} />
+              <Route path="accessories" element={<Accessories />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

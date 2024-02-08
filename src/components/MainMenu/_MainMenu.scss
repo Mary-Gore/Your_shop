@@ -15,10 +15,6 @@
       color: $darkGray;
     }
 
-    /*&_active {
-      border-bottom: 4px solid $accent;
-    } */
-
     &_active::before {
       position: absolute;
       bottom: -15px;

@@ -1,21 +1,18 @@
-import { Outlet } from 'react-router-dom';
-import ExtraMenu from '../ExtraMenu/ExtraMenu';
 import Products from '../../features/Products/Products';
 import FIlterBtn from '../UI/FilterBtn/FilterBtn';
 import SortBtn from '../UI/SortBtn/SortBtn';
 
-const Men = () => {
+const Home = () => {
   return (
-    <div>
-      <ExtraMenu />
-      <Outlet />
+    <>
+      <p> Home</p>
       <div className="content-bar-wrap">
         <FIlterBtn className="filter-btn" />
         <SortBtn />
       </div>
       <Products />
-    </div>
+    </>
   );
 };
 
-export default Men;
+export default Home;

@@ -113,6 +113,11 @@ legend {
   align-items: flex-start;
 }
 
+.content-bar-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* UI */
 
 .preloader {

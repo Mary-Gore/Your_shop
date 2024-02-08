@@ -32,7 +32,8 @@ const Products = () => {
   const handleToggleFavorite = vendor => {
     dispatch(toggleFavorite(vendor));
   };
-
+  console.log('audience', category);
+  console.log('prod cat', prodCategory);
   const filteredProds = products.filter(product => {
     const audienceFilter = category !== '' ? product.audience === category : product;
     const prodCatFilter = prodCategory !== '' ? product.category === prodCategory : product;

@@ -15,6 +15,9 @@ const filterSlice = createSlice({
     setProdCategory: (state, action) => {
       state.prodCategory = action.payload;
     },
+    resetProdCategory: state => {
+      state.prodCategory = initialState.prodCategory;
+    },
   },
 });
 
@@ -22,7 +25,7 @@ const filterSlice = createSlice({
 export default filterSlice.reducer;
 
 //Actions
-export const { setCategory, setProdCategory } = filterSlice.actions;
+export const { setCategory, setProdCategory, resetProdCategory } = filterSlice.actions;
 
 // Selectors
 export const selectCategory = state => state.filter.category;

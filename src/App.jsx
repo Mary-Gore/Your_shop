@@ -9,7 +9,6 @@ import Clothes from './components/pages/Clothes';
 import Shoes from './components/pages/Shoes';
 import Accessories from './components/pages/Accessories';
 import Beauty from './components/pages/Beauty';
-//import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 
 function App() {
   return (

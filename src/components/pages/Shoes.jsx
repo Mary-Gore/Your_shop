@@ -1,4 +1,4 @@
-import Products from '../../features/Products/Products';
+import Products from '../../features/products/Products';
 
 const WomenShoes = () => {
   return (

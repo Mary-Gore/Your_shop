@@ -1,4 +1,4 @@
-import Products from '../../features/products/Products';
+import Products from '../../features/Products/Products';
 import FIlterBtn from '../UI/FilterBtn/FilterBtn';
 import SortBtn from '../UI/SortBtn/SortBtn';
 

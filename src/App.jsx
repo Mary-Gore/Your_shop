@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import CatalogFiltered from './features/catalog_filter/CatalogFilter';
 import Home from './components/pages/Home';
 import Women from './components/pages/Women';
 import CategoryHome from './components/pages/CategoryHome';
@@ -17,14 +16,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            {/*<Route index element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="women" element={<Women />}>
               <Route index element={<CategoryHome />} />
               <Route path="clothes" element={<Clothes />} />
               <Route path="shoes" element={<Shoes />} />
               <Route path="accessories" element={<Accessories />} />
               <Route path="beauty" element={<Beauty />} />
-            </>
+            </Route>
             <Route path="men" element={<Men />}>
               <Route index element={<CategoryHome />} />
               <Route path="clothes" element={<Clothes />} />
@@ -37,10 +36,7 @@ function App() {
               <Route path="shoes" element={<Shoes />} />
               <Route path="accessories" element={<Accessories />} />
             </Route>
-
-            */}
           </Route>
-          <Route path="/catalog_filtered/:audience/:prod_category" element={<CatalogFiltered />} />
         </Routes>
       </BrowserRouter>
     </div>

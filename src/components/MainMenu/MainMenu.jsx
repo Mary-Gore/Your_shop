@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
+/*import {
   setCategory,
   resetProdCategory,
   selectProdCategory,
-} from '../../features/filter/filterSlice';
+} from '../../features/filter/filterSlice'; */
 
 const MainMenu = () => {
   const dispatch = useDispatch();
-  const prodCategory = useSelector(selectProdCategory);
+  //const prodCategory = useSelector(selectProdCategory);
 
   const handleCatValues = catName => {
     const handleAudience = () => {
@@ -25,8 +25,8 @@ const MainMenu = () => {
       }
     };
 
-    dispatch(setCategory(handleAudience()));
-    if (prodCategory !== '') dispatch(resetProdCategory());
+    // dispatch(setCategory(handleAudience()));
+    // if (prodCategory !== '') dispatch(resetProdCategory());
   };
 
   return (
@@ -37,7 +37,7 @@ const MainMenu = () => {
           className={({ isActive }) =>
             isActive ? 'main-menu__link main-menu__link_active' : 'main-menu__link'
           }
-          onClick={e => handleCatValues(e.target.textContent)}
+          //   onClick={e => handleCatValues(e.target.textContent)}
         >
           Женщинам
         </NavLink>
@@ -46,7 +46,7 @@ const MainMenu = () => {
           className={({ isActive }) =>
             isActive ? 'main-menu__link main-menu__link_active' : 'main-menu__link'
           }
-          onClick={e => handleCatValues(e.target.textContent)}
+          // onClick={e => handleCatValues(e.target.textContent)}
         >
           Мужчинам
         </NavLink>
@@ -55,7 +55,7 @@ const MainMenu = () => {
           className={({ isActive }) =>
             isActive ? 'main-menu__link main-menu__link_active' : 'main-menu__link'
           }
-          onClick={e => handleCatValues(e.target.textContent)}
+          // onClick={e => handleCatValues(e.target.textContent)}
         >
           Детям
         </NavLink>

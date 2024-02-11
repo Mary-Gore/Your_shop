@@ -6,7 +6,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
 
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
-import { selectCategory, selectProdCategory } from '../filter/filterSlice';
+import { selectCategory, selectProdCategory } from '../catalog_filter/catalogFilterSlice';
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
 
 //my icons
@@ -17,8 +17,8 @@ import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 const Products = () => {
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
-  const category = useSelector(selectCategory);
-  const prodCategory = useSelector(selectProdCategory);
+  //const category = useSelector(selectCategory);
+  //const prodCategory = useSelector(selectProdCategory);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,23 +29,24 @@ const Products = () => {
     );
   }, []);
 
+  console.log('fetch prod', products);
   const handleToggleFavorite = vendor => {
     dispatch(toggleFavorite(vendor));
   };
 
-  const filteredProds = products.filter(product => {
+  /*const filteredProds = products.filter(product => {
     const audienceFilter = category !== '' ? product.audience === category : product;
     const prodCatFilter = prodCategory !== '' ? product.category === prodCategory : product;
 
     return audienceFilter && prodCatFilter;
-  });
+  }); */
 
   return (
     <div className="products">
       {/*Оставить для SEO скрытым через стиди <h1>Products</h1> */}
       {isLoading && <BiLoaderAlt className="preloader" />}
       <ul className="products__list">
-        {filteredProds.map(prod => (
+        {products.map(prod => (
           <li className="products__item" key={prod.vendor}>
             <span className="favorite-icon-wrap" onClick={() => handleToggleFavorite(prod.vendor)}>
               {prod.isFavorite ? (

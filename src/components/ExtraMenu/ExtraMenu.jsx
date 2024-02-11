@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setProdCategory } from '../../features/filter/filterSlice';
+//import { setProdCategory } from '../../features/filter/filterSlice';
 
 const ExtraMenu = ({ category }) => {
   const dispatch = useDispatch();

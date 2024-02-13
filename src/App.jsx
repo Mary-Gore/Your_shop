@@ -1,14 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Home from './components/pages/Home';
-import Women from './components/pages/Women';
-import CategoryHome from './components/pages/CategoryHome';
-import Men from './components/pages/Men';
-import Children from './components/pages/Children';
-import Clothes from './components/pages/Clothes';
-import Shoes from './components/pages/Shoes';
-import Accessories from './components/pages/Accessories';
-import Beauty from './components/pages/Beauty';
+import Catalog from './components/pages/Catalog';
 
 function App() {
   return (
@@ -16,6 +8,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLayout />}>
+            <Route path="/:audience?/:prod_category?" element={<Catalog />} />
+            {/*
             <Route index element={<Home />} />
             <Route path="women" element={<Women />}>
               <Route index element={<CategoryHome />} />
@@ -36,6 +30,7 @@ function App() {
               <Route path="shoes" element={<Shoes />} />
               <Route path="accessories" element={<Accessories />} />
             </Route>
+*/}
           </Route>
         </Routes>
       </BrowserRouter>

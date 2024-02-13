@@ -6,21 +6,25 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
 
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
-import { selectCategory, selectProdCategory } from '../filter/filterSlice';
+//import { selectCategory, selectProdCategory } from '../filteredProducts/filteredProductsSlice';
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
 
 //my icons
 import newIcon from '../../icons/iconNew.svg';
 import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
-  const products = useSelector(selectProducts);
-  const isLoading = useSelector(selectIsLoading);
-  const category = useSelector(selectCategory);
-  const prodCategory = useSelector(selectProdCategory);
-  const dispatch = useDispatch();
+  const products = useSelector(selectProducts),
+    isLoading = useSelector(selectIsLoading),
+    dispatch = useDispatch(),
+    categories = useParams(),
+    audience = categories.audience,
+    prodCategory = categories['prod_category'];
 
+  //const category = useSelector(selectCategory);
+  //const prodCategory = useSelector(selectProdCategory);
   useEffect(() => {
     dispatch(
       fetchProds(
@@ -33,9 +37,20 @@ const Products = () => {
     dispatch(toggleFavorite(vendor));
   };
 
-  const filteredProds = products.filter(product => {
+  /*const filteredProds = products.filter(product => {
     const audienceFilter = category !== '' ? product.audience === category : product;
     const prodCatFilter = prodCategory !== '' ? product.category === prodCategory : product;
+
+    return audienceFilter && prodCatFilter;
+  }); */
+
+  const filteredProds = products.filter(product => {
+    let audienceFilter = product.audience === audience;
+    let prodCatFilter = product.category === prodCategory;
+
+    /* Если параметры отсутствуют */
+    if (!prodCategory) prodCatFilter = true;
+    if (!audience) audienceFilter = true;
 
     return audienceFilter && prodCatFilter;
   });

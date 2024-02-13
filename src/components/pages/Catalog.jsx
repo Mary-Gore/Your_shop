@@ -1,21 +1,22 @@
-import { Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Products from '../../features/products/Products';
 import ExtraMenu from '../ExtraMenu/ExtraMenu';
 import FIlterBtn from '../UI/FilterBtn/FilterBtn';
 import SortBtn from '../UI/SortBtn/SortBtn';
-import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
 
-const Children = () => {
+const Catalog = () => {
+  const audience = useParams().audience;
   return (
-    <div>
-      <ExtraMenu />
+    <>
+      <p>Catalog</p>
+      {audience && <ExtraMenu />}
       <div className="content-bar-wrap">
         <FIlterBtn className="filter-btn" />
-        <Breadcrumbs />
         <SortBtn />
       </div>
-      <Outlet />
-    </div>
+      <Products />
+    </>
   );
 };
 
-export default Children;
+export default Catalog;

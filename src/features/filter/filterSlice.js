@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+/*const initialState = {
   category: '',
   prodCategory: '',
+};*/
+
+const initialState = {
+  brands: [],
 };
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setCategory: (state, action) => {
+    /* setCategory: (state, action) => {
       state.category = action.payload;
     },
     setProdCategory: (state, action) => {
@@ -20,7 +24,7 @@ const filterSlice = createSlice({
     },
     resetProdCategory: state => {
       state.prodCategory = initialState.prodCategory;
-    },
+    },*/
   },
 });
 
@@ -28,9 +32,9 @@ const filterSlice = createSlice({
 export default filterSlice.reducer;
 
 //Actions
-export const { setCategory, setProdCategory, resetProdCategory, resetCategory } =
-  filterSlice.actions;
+/*export const { setCategory, setProdCategory, resetProdCategory, resetCategory } =
+  filteredProductsSlice.actions; */
 
 // Selectors
-export const selectCategory = state => state.filter.category;
-export const selectProdCategory = state => state.filter.prodCategory;
+//export const selectCategory = state => state.filter.category;
+//export const selectProdCategory = state => state.filter.prodCategory;

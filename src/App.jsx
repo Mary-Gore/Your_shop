@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Catalog from './components/pages/Catalog';
-
 function App() {
   return (
     <div className="App">

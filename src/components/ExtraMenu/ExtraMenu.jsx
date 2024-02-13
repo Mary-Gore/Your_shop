@@ -1,11 +1,12 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
-const ExtraMenu = ({ category }) => {
+const ExtraMenu = () => {
+  const audience = useParams().audience;
   return (
     <>
       <ul className="extra-menu">
         <NavLink
-          to="clothes"
+          to={`../${audience}/clothes`}
           className={({ isActive }) =>
             isActive ? 'extra-menu__link extra-menu__link_active' : 'extra-menu__link'
           }
@@ -13,7 +14,7 @@ const ExtraMenu = ({ category }) => {
           Одежда
         </NavLink>
         <NavLink
-          to="shoes"
+          to={`../${audience}/shoes`}
           className={({ isActive }) =>
             isActive ? 'extra-menu__link extra-menu__link_active' : 'extra-menu__link'
           }
@@ -21,16 +22,16 @@ const ExtraMenu = ({ category }) => {
           Обувь
         </NavLink>
         <NavLink
-          to="accessories"
+          to={`../${audience}/accessories`}
           className={({ isActive }) =>
             isActive ? 'extra-menu__link extra-menu__link_active' : 'extra-menu__link'
           }
         >
           Аксессуары
         </NavLink>
-        {category === 'women' && (
+        {audience === 'women' && (
           <NavLink
-            to="beauty"
+            to={`../${audience}/beauty`}
             className={({ isActive }) =>
               isActive ? 'extra-menu__link extra-menu__link_active' : 'extra-menu__link'
             }

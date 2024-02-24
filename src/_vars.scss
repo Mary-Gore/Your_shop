@@ -4,16 +4,19 @@
   $container-tab-offset: 20px;
   $container-mob-offset: 15px;
   $container-width: calc(#{$content-width} + (#{$container-offset} * 2));
+  $grid-gap: 20px;
 
   // colors
   $darkGray: #333333;
   $iconsGray: #D1DBDD;
   $lightGrayText: #BECCCE;
+  $middleGray: #5B5B5B;
   $accent: #01AB8D;
   $strokeBtnActive: #009779;
   $favoriteHover: #F97979;
 
   // fonts
+  $filterTitle: 600 18px/1 Lato, sans-serif;
   $mainText: 500 16px/1 Lato, sans-serif;
   $prodTitle: 500 20px/1.5 Lato, sans-serif;
   $prodPrice: 600 20px/1.5 Lato, sans-serif;

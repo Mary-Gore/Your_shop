@@ -1,8 +1,8 @@
 import { ReactComponent as FilterIcon } from '../../../icons/iconFilter.svg';
 
-const FilterBtn = () => {
+const FilterBtn = ({ onClick }) => {
   return (
-    <button className="filter-btn">
+    <button className="filter-btn" onClick={() => onClick()}>
       <FilterIcon className="filter-icon" />
       Фильтры
     </button>

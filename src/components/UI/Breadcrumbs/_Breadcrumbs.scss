@@ -1,15 +1,19 @@
-.crumb-link {
-  font: $mainText;
-  color: $darkGray;
+.breadcrumbs-nav {
+  margin-left: auto;
 
-  &:not(:last-child) {
-    &::after {
-      padding: 0 10px 0 10px;
-      content: '/';
+  .crumb-link {
+    font: $mainText;
+    color: $darkGray;
+
+    &:not(:last-child) {
+      &::after {
+        padding: 0 10px 0 10px;
+        content: '/';
+      }
     }
   }
-}
 
-.crumb-link_active {
-  color: $lightGrayText;
+  .crumb-link_active {
+    color: $lightGrayText;
+  }
 }

@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
-import { useDispatch, useSelector } from 'react-redux';
 
 const routes = [
   { path: '/', breadcrumb: 'Главная' },
@@ -20,23 +19,11 @@ const routes = [
 ];
 
 const Breadcrumbs = () => {
-  /*const breadcrumbs = useBreadcrumbs(routes);
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const prodCategory = useSelector(selectProdCategory);
-  const category = useSelector(selectCategory);
-
-  const handlePath = path => {
-    if (path === '/women' || path === '/men' || path === '/children') {
-      if (prodCategory !== '') dispatch(resetProdCategory());
-    } else if (path === '/') {
-      if (category !== '') dispatch(resetCategory());
-    }
-  }; */
+  const breadcrumbs = useBreadcrumbs(routes),
+    location = useLocation();
 
   return (
-    <p>breadcrumbs</p>
-    /*<nav aria-label="Страницы">
+    <nav className="breadcrumbs-nav" aria-label="Страницы">
       {breadcrumbs.map(({ match, breadcrumb }) => (
         <NavLink
           aria-current="page"
@@ -45,12 +32,11 @@ const Breadcrumbs = () => {
           }
           key={match.pathname}
           to={match.pathname}
-          onClick={() => handlePath(match.pathname)}
         >
           {breadcrumb}
         </NavLink>
       ))}
-    </nav> */
+    </nav>
   );
 };
 

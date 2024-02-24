@@ -1,15 +1,19 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-//react icons
+// React icons
 import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
-
+// Selectors
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
-//import { selectCategory, selectProdCategory } from '../filteredProducts/filteredProductsSlice';
+import {
+  addBrand,
+  removeAllBrands,
+  selectFilteredBrandsBase,
+  selectIsFiltered,
+} from '../filter/filterSlice';
+// Components
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
-
-//my icons
+// My icons
 import newIcon from '../../icons/iconNew.svg';
 import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
@@ -18,13 +22,14 @@ import { useParams } from 'react-router-dom';
 const Products = () => {
   const products = useSelector(selectProducts),
     isLoading = useSelector(selectIsLoading),
+    isFiltered = useSelector(selectIsFiltered),
     dispatch = useDispatch(),
     categories = useParams(),
     audience = categories.audience,
-    prodCategory = categories['prod_category'];
+    prodCategory = categories['prod_category'],
+    tempBrands = [],
+    filteredBrandsBase = useSelector(selectFilteredBrandsBase);
 
-  //const category = useSelector(selectCategory);
-  //const prodCategory = useSelector(selectProdCategory);
   useEffect(() => {
     dispatch(
       fetchProds(
@@ -33,31 +38,57 @@ const Products = () => {
     );
   }, []);
 
+  useEffect(() => {
+    products.forEach(product => {
+      if (
+        (product.audience === audience || !audience) &&
+        (product.category === prodCategory || !prodCategory)
+      ) {
+        tempBrands.push(product.brand);
+      }
+    });
+
+    /* Составление массива уник. названий брендов */
+    if (tempBrands.length !== 0) {
+      const filterBrands = tempBrands.reduce((acc, brand) => {
+        if (acc.includes(brand)) {
+          return acc;
+        } else {
+          return [...acc, brand];
+        }
+      }, []);
+
+      dispatch(removeAllBrands());
+      dispatch(addBrand(filterBrands));
+    }
+  }, [products, audience, prodCategory]);
+
   const handleToggleFavorite = vendor => {
     dispatch(toggleFavorite(vendor));
   };
 
-  /*const filteredProds = products.filter(product => {
-    const audienceFilter = category !== '' ? product.audience === category : product;
-    const prodCatFilter = prodCategory !== '' ? product.category === prodCategory : product;
-
-    return audienceFilter && prodCatFilter;
-  }); */
-
   const filteredProds = products.filter(product => {
-    let audienceFilter = product.audience === audience;
-    let prodCatFilter = product.category === prodCategory;
+    let audienceFilter = product.audience === audience,
+      prodCatFilter = product.category === prodCategory,
+      brandFilter = false;
+
+    if (isFiltered) {
+      filteredBrandsBase.forEach(brand => {
+        if (product.brand === brand) brandFilter = true;
+      });
+    }
 
     /* Если параметры отсутствуют */
     if (!prodCategory) prodCatFilter = true;
     if (!audience) audienceFilter = true;
+    if (!isFiltered) brandFilter = true;
 
-    return audienceFilter && prodCatFilter;
+    return audienceFilter && prodCatFilter && brandFilter;
   });
 
   return (
     <div className="products">
-      {/*Оставить для SEO скрытым через стиди <h1>Products</h1> */}
+      {/*Оставить для SEO скрытым через стили <h1>Products</h1> */}
       {isLoading && <BiLoaderAlt className="preloader" />}
       <ul className="products__list">
         {filteredProds.map(prod => (

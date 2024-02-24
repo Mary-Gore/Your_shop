@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import TopBar from '../components/TopBar/TopBar';
 import LogoBlack from '../components/Logo/LogoBlack';
 import MainMenu from '../components/MainMenu/MainMenu';
@@ -10,7 +10,9 @@ const MainLayout = () => {
       <header>
         <TopBar />
         <div className="header-wrapper">
-          <LogoBlack />
+          <Link to=".">
+            <LogoBlack />
+          </Link>
           <MainMenu />
           <CartFavoriteBtns />
         </div>

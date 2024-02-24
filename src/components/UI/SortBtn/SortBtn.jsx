@@ -1,8 +1,8 @@
 import { ReactComponent as IconSort } from '../../../icons/iconSort.svg';
 
-const SortBtn = () => {
+const SortBtn = ({ onClick }) => {
   return (
-    <button className="sort-btn">
+    <button className="sort-btn" onClick={() => onClick()}>
       <IconSort className="sort-icon" />
       Сортировка
     </button>

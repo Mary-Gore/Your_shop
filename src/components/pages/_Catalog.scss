@@ -1,0 +1,14 @@
+.filter-title {
+  margin-bottom: 20px;
+  font: $filterTitle;
+  color: $darkGray;
+}
+
+.filter-item {
+  font: $mainText;
+  color: $middleGray;
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}

@@ -7,14 +7,18 @@
 @import "./App";
 @import "./components/Header/Header";
 @import "./features/Products/Products";
+@import "./components/pages/Catalog";
+@import "./components/Product/Product";
 
 /* import small components */
 @import "./components/TopBar/TopBar";
 @import "./components/MainMenu/MainMenu";
 @import "./components/ExtraMenu/ExtraMenu";
+@import "./components/Product/Product";
 @import "./components/UI/CartFavoriteBtns/CartFavoriteBtns";
 @import "./components/UI/Button/ButtonStroke";
 @import "./components/UI/IconFav/IconFav";
 @import "./components/UI/FilterBtn/FilterBtn";
 @import "./components/UI/SortBtn/SortBtn";
 @import "./components/UI/Breadcrumbs/Breadcrumbs";
+@import "./components/UI/Popup/Popup";

@@ -4,6 +4,9 @@ const initialState = {
   brands: [],
   filteredBrands: [],
   filteredBrandsBase: [],
+  colors: [],
+  filteredColors: [],
+  filteredColorsbase: [],
   isFiltered: false,
 };
 
@@ -37,6 +40,29 @@ const filterSlice = createSlice({
     setFilters: (state, action) => {
       state.isFiltered = action.payload;
     },
+    addColor: (state, action) => {
+      state.colors = action.payload;
+    },
+    setFilteredColors: (state, action) => {
+      state.filteredColors.push(action.payload);
+    },
+    removeFilteredColors: (state, action) => {
+      const filteredColors = state.filteredColors.filter(color => color !== action.payload);
+      return { ...state, filteredColors };
+    },
+    copyFilteredColors: state => {
+      const filteredColorsBase = [...state.filteredColors];
+      return { ...state, filteredColorsBase };
+    },
+    copyFilteredColorsBase: state => {
+      const filteredColors = [...state.filteredColorsBase];
+      return { ...state, filteredColors };
+    },
+    removeAllColors: state => {
+      const filteredColors = [],
+        filteredColorsBase = [];
+      return { ...state, filteredColors, filteredColorsBase, isFiltered: false };
+    },
   },
 });
 
@@ -52,10 +78,14 @@ export const {
   setFilters,
   copyFilteredBrands,
   copyFilteredBrandsBase,
+  addColor,
 } = filterSlice.actions;
 
 // Selectors
 export const selectBrands = state => state.filter.brands;
 export const selectFilteredBrands = state => state.filter.filteredBrands;
 export const selectFilteredBrandsBase = state => state.filter.filteredBrandsBase;
+export const selectColors = state => state.filter.colors;
+export const selectFilteredColors = state => state.filter.filteredColors;
+export const selectFilteredColorsBase = state => state.filter.filteredColorsBase;
 export const selectIsFiltered = state => state.filter.isFiltered;

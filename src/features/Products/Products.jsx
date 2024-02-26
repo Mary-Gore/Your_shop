@@ -7,9 +7,11 @@ import { FaCircle } from 'react-icons/fa';
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
 import {
   addBrand,
+  addColor,
   removeAllBrands,
   selectFilteredBrandsBase,
   selectIsFiltered,
+  selectFilteredColorsBase,
 } from '../filter/filterSlice';
 // Components
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
@@ -28,6 +30,7 @@ const Products = () => {
     audience = categories.audience,
     prodCategory = categories['prod_category'],
     tempBrands = [],
+    tempColors = [],
     filteredBrandsBase = useSelector(selectFilteredBrandsBase);
 
   useEffect(() => {
@@ -45,12 +48,13 @@ const Products = () => {
         (product.category === prodCategory || !prodCategory)
       ) {
         tempBrands.push(product.brand);
+        product.colors.forEach(color => tempColors.push(color));
       }
     });
 
     /* Составление массива уник. названий брендов */
     if (tempBrands.length !== 0) {
-      const filterBrands = tempBrands.reduce((acc, brand) => {
+      const uniqueBrands = tempBrands.reduce((acc, brand) => {
         if (acc.includes(brand)) {
           return acc;
         } else {
@@ -59,7 +63,19 @@ const Products = () => {
       }, []);
 
       dispatch(removeAllBrands());
-      dispatch(addBrand(filterBrands));
+      dispatch(addBrand(uniqueBrands));
+    }
+
+    if (tempColors.length !== 0) {
+      const uniqueColors = tempColors.reduce((acc, color) => {
+        if (acc.includes(color)) {
+          return acc;
+        } else {
+          return [...acc, color];
+        }
+      }, []);
+
+      dispatch(addColor(uniqueColors));
     }
   }, [products, audience, prodCategory]);
 

@@ -12,6 +12,7 @@ import {
   selectFilteredBrandsBase,
   selectIsFiltered,
   selectFilteredColorsBase,
+  removeAllColors,
 } from '../filter/filterSlice';
 // Components
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
@@ -31,7 +32,8 @@ const Products = () => {
     prodCategory = categories['prod_category'],
     tempBrands = [],
     tempColors = [],
-    filteredBrandsBase = useSelector(selectFilteredBrandsBase);
+    filteredBrandsBase = useSelector(selectFilteredBrandsBase),
+    filteredColorsBase = useSelector(selectFilteredColorsBase);
 
   useEffect(() => {
     dispatch(
@@ -75,6 +77,7 @@ const Products = () => {
         }
       }, []);
 
+      dispatch(removeAllColors());
       dispatch(addColor(uniqueColors));
     }
   }, [products, audience, prodCategory]);
@@ -86,67 +89,91 @@ const Products = () => {
   const filteredProds = products.filter(product => {
     let audienceFilter = product.audience === audience,
       prodCatFilter = product.category === prodCategory,
-      brandFilter = false;
+      brandFilter = false,
+      colorFilter = false;
 
     if (isFiltered) {
-      filteredBrandsBase.forEach(brand => {
-        if (product.brand === brand) brandFilter = true;
+      if (filteredBrandsBase.length !== 0) {
+        filteredBrandsBase.forEach(brand => {
+          if (product.brand === brand) brandFilter = true;
+        });
+      } else {
+        brandFilter = true;
+      }
+
+      filteredColorsBase.forEach(color => {
+        product.colors.forEach(prodColor => {
+          if (prodColor === color) {
+            colorFilter = true;
+          }
+        });
       });
     }
 
     /* Если параметры отсутствуют */
     if (!prodCategory) prodCatFilter = true;
     if (!audience) audienceFilter = true;
-    if (!isFiltered) brandFilter = true;
+    if (!isFiltered) {
+      brandFilter = true;
+      colorFilter = true;
+    }
 
-    return audienceFilter && prodCatFilter && brandFilter;
+    return audienceFilter && prodCatFilter && brandFilter && colorFilter;
   });
 
   return (
     <div className="products">
       {/*Оставить для SEO скрытым через стили <h1>Products</h1> */}
       {isLoading && <BiLoaderAlt className="preloader" />}
-      <ul className="products__list">
-        {filteredProds.map(prod => (
-          <li className="products__item" key={prod.vendor}>
-            <span className="favorite-icon-wrap" onClick={() => handleToggleFavorite(prod.vendor)}>
-              {prod.isFavorite ? (
-                <IconFavFill className="products__favorite-icon_fill favorite-icon_fill" />
-              ) : (
-                <IconFav className="products__favorite-icon favorite-icon" />
+      {isFiltered && filteredProds.length === 0 && (
+        <div className="not-found-filters">Совпадений не найдено</div>
+      )}
+      {filteredProds.length > 0 && (
+        <ul className="products__list">
+          {filteredProds.map(prod => (
+            <li className="products__item" key={prod.vendor}>
+              <span
+                className="favorite-icon-wrap"
+                onClick={() => handleToggleFavorite(prod.vendor)}
+              >
+                {prod.isFavorite ? (
+                  <IconFavFill className="products__favorite-icon_fill favorite-icon_fill" />
+                ) : (
+                  <IconFav className="products__favorite-icon favorite-icon" />
+                )}
+              </span>
+
+              <div className="products__img-wrap">
+                <img src={`/img/products/${prod.preview}`} alt="product img" />
+              </div>
+
+              {prod.actual === 'new' && (
+                <img className="products__new-icon new-icon" src={newIcon} alt="icon new" />
               )}
-            </span>
 
-            <div className="products__img-wrap">
-              <img src={`/img/products/${prod.preview}`} alt="product img" />
-            </div>
-
-            {prod.actual === 'new' && (
-              <img className="products__new-icon new-icon" src={newIcon} alt="icon new" />
-            )}
-
-            <h2 className="products__item-title">{prod.title}</h2>
-            <span className="products__colors-wrapper">
-              {prod.colors.map((color, index) => (
-                <FaCircle
-                  key={index}
-                  style={{ color: color }}
-                  className={
-                    color === 'white'
-                      ? 'products__color-icon color-icon_white'
-                      : 'products__color-icon color-icon'
-                  }
-                />
-              ))}
-            </span>
-            <div className="products__price-wrap">
-              {prod.oldPrice && <p className="products__old-price">{`${prod.oldPrice} ₽`}</p>}
-              <p className="products__item-price">{`${prod.price} ₽`}</p>
-            </div>
-            <ButtonStroke className="products__btn-stroke">В корзину</ButtonStroke>
-          </li>
-        ))}
-      </ul>
+              <h2 className="products__item-title">{prod.title}</h2>
+              <span className="products__colors-wrapper">
+                {prod.colors.map((color, index) => (
+                  <FaCircle
+                    key={index}
+                    style={{ color: color }}
+                    className={
+                      color === 'white'
+                        ? 'products__color-icon color-icon_white'
+                        : 'products__color-icon color-icon'
+                    }
+                  />
+                ))}
+              </span>
+              <div className="products__price-wrap">
+                {prod.oldPrice && <p className="products__old-price">{`${prod.oldPrice} ₽`}</p>}
+                <p className="products__item-price">{`${prod.price} ₽`}</p>
+              </div>
+              <ButtonStroke className="products__btn-stroke">В корзину</ButtonStroke>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

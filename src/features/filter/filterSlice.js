@@ -6,7 +6,7 @@ const initialState = {
   filteredBrandsBase: [],
   colors: [],
   filteredColors: [],
-  filteredColorsbase: [],
+  filteredColorsBase: [],
   isFiltered: false,
 };
 
@@ -79,6 +79,11 @@ export const {
   copyFilteredBrands,
   copyFilteredBrandsBase,
   addColor,
+  setFilteredColors,
+  removeFilteredColors,
+  copyFilteredColors,
+  copyFilteredColorsBase,
+  removeAllColors,
 } = filterSlice.actions;
 
 // Selectors

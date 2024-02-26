@@ -18,6 +18,10 @@ import {
   copyFilteredBrandsBase,
   selectColors,
   selectFilteredColors,
+  removeFilteredColors,
+  setFilteredColors,
+  copyFilteredColors,
+  copyFilteredColorsBase,
 } from '../../features/filter/filterSlice';
 
 const Catalog = () => {
@@ -34,10 +38,20 @@ const Catalog = () => {
 
   /* Добавление и удаление значения checkbox из store - filteredBrands */
   const handleCheckbox = e => {
-    if (filteredBrands.includes(e.target.value)) {
-      dispatch(removeFilteredBrands(e.target.value));
-    } else {
-      dispatch(setFilteredBrands(e.target.value));
+    if (e.target.name === 'brand_checkbox') {
+      if (filteredBrands.includes(e.target.value)) {
+        dispatch(removeFilteredBrands(e.target.value));
+      } else {
+        dispatch(setFilteredBrands(e.target.value));
+      }
+    }
+
+    if (e.target.name === 'color_checkbox') {
+      if (filteredColors.includes(e.target.value)) {
+        dispatch(removeFilteredColors(e.target.value));
+      } else {
+        dispatch(setFilteredColors(e.target.value));
+      }
     }
   };
 
@@ -53,11 +67,13 @@ const Catalog = () => {
     dispatch(setFilters(true));
     setPopupFilterOpen(false);
     dispatch(copyFilteredBrands());
+    dispatch(copyFilteredColors());
   };
 
   const onFilterBtnHandler = () => {
     setPopupFilterOpen(!isPopupFilterOpen);
     dispatch(copyFilteredBrandsBase());
+    dispatch(copyFilteredColorsBase());
   };
 
   const handleColorName = colorName => {
@@ -102,13 +118,14 @@ const Catalog = () => {
                 <li className="filter-item" key={index}>
                   <input
                     type="checkbox"
+                    name="brand_checkbox"
                     onChange={handleCheckbox}
                     value={brand}
                     checked={getCheckedBrands(brand)}
-                    id={`check-${index + 1}`}
+                    id={`brand-check-${index + 1}`}
                     className="custom-checkbox"
                   />
-                  <label htmlFor={`check-${index + 1}`}>{brand}</label>
+                  <label htmlFor={`brand-check-${index + 1}`}>{brand}</label>
                 </li>
               ))}
             </ul>
@@ -119,13 +136,14 @@ const Catalog = () => {
               <li className="filter-item" key={index}>
                 <input
                   type="checkbox"
-                  onChange={e => handleCheckbox(e.target)}
+                  name="color_checkbox"
+                  onChange={handleCheckbox}
                   value={color}
                   checked={getCheckedColors(color)}
-                  id={`check-${index + 1}`}
+                  id={`color-check-${index + 1}`}
                   className="filter-colors__custom-checkbox custom-checkbox"
                 />
-                <label htmlFor={`check-${index + 1}`}>{handleColorName(color)}</label>
+                <label htmlFor={`color-check-${index + 1}`}>{handleColorName(color)}</label>
                 <FaCircle
                   key={index}
                   style={{ color: color }}

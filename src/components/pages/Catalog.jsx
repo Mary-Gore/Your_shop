@@ -6,6 +6,7 @@ import Products from '../../features/products/Products';
 import ExtraMenu from '../ExtraMenu/ExtraMenu';
 import FIlterBtn from '../UI/FilterBtn/FilterBtn';
 import SortBtn from '../UI/SortBtn/SortBtn';
+import ButtonFill from '../UI/Button/ButtonFill';
 import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
 import Popup from '../UI/Popup/Popup';
 import {
@@ -111,52 +112,58 @@ const Catalog = () => {
       <div className="content-bar-wrap">
         <FIlterBtn className="filter-btn" onClick={() => onFilterBtnHandler()} />
         <Popup className="filter" isOpen={isPopupFilterOpen}>
-          <h3 className="filter-title">Бренды</h3>
-          {brands && (
+          <div className="filter__brands">
+            <h3 className="filter-title">Бренды</h3>
+            {brands && (
+              <ul>
+                {brands.map((brand, index) => (
+                  <li className="filter-item" key={index}>
+                    <input
+                      type="checkbox"
+                      name="brand_checkbox"
+                      onChange={handleCheckbox}
+                      value={brand}
+                      checked={getCheckedBrands(brand)}
+                      id={`brand-check-${index + 1}`}
+                      className="custom-checkbox"
+                    />
+                    <label htmlFor={`brand-check-${index + 1}`}>{brand}</label>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="filter__colors">
+            <h3 className="filter-title">Цвета</h3>
             <ul>
-              {brands.map((brand, index) => (
+              {colors.map((color, index) => (
                 <li className="filter-item" key={index}>
                   <input
                     type="checkbox"
-                    name="brand_checkbox"
+                    name="color_checkbox"
                     onChange={handleCheckbox}
-                    value={brand}
-                    checked={getCheckedBrands(brand)}
-                    id={`brand-check-${index + 1}`}
-                    className="custom-checkbox"
+                    value={color}
+                    checked={getCheckedColors(color)}
+                    id={`color-check-${index + 1}`}
+                    className="filter-colors__custom-checkbox custom-checkbox"
                   />
-                  <label htmlFor={`brand-check-${index + 1}`}>{brand}</label>
+                  <label htmlFor={`color-check-${index + 1}`}>{handleColorName(color)}</label>
+                  <FaCircle
+                    key={index}
+                    style={{ color: color }}
+                    className={
+                      color === 'white'
+                        ? 'filter__color-icon color-icon_white'
+                        : 'filter__color-icon color-icon'
+                    }
+                  />
                 </li>
               ))}
             </ul>
-          )}
-          <h3 className="filter-title">Цвета</h3>
-          <ul>
-            {colors.map((color, index) => (
-              <li className="filter-item" key={index}>
-                <input
-                  type="checkbox"
-                  name="color_checkbox"
-                  onChange={handleCheckbox}
-                  value={color}
-                  checked={getCheckedColors(color)}
-                  id={`color-check-${index + 1}`}
-                  className="filter-colors__custom-checkbox custom-checkbox"
-                />
-                <label htmlFor={`color-check-${index + 1}`}>{handleColorName(color)}</label>
-                <FaCircle
-                  key={index}
-                  style={{ color: color }}
-                  className={
-                    color === 'white'
-                      ? 'filter__color-icon color-icon_white'
-                      : 'filter__color-icon color-icon'
-                  }
-                />
-              </li>
-            ))}
-          </ul>
-          <button onClick={() => handleFilters()}>Применить</button>
+          </div>
+          <ButtonFill className="filter__btn-fill" onClick={() => handleFilters()}>
+            Применить
+          </ButtonFill>
         </Popup>
         <Popup className="sort" isOpen={isPopupSortOpen}>
           <h2>Sort filter</h2>

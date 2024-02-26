@@ -7,12 +7,16 @@
   $grid-gap: 20px;
 
   // colors
+  $middleGreen: #009779;
+  $darkGreen: #008365;
   $darkGray: #333333;
   $iconsGray: #D1DBDD;
   $lightGrayText: #BECCCE;
   $middleGray: #5B5B5B;
   $accent: #01AB8D;
-  $strokeBtnActive: #009779;
+  $strokeBtnActive: $middleGreen;
+  $fillBtnHover: $middleGreen;
+  $fillBtnActive: $darkGreen;
   $favoriteHover: #F97979;
 
   // fonts

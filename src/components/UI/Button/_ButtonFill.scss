@@ -1,0 +1,24 @@
+.btn-fill {
+  &:not(.filter__btn-fill) {
+    font: $btnText;
+  }
+}
+
+.btn-fill {
+  padding: 8px 0 10px;
+  border: 2px solid $accent;
+  min-width: 128px;
+  color: #fff;
+  background-color: $accent;
+
+  &:hover {
+    background-color: $fillBtnHover;
+    border-color: $fillBtnHover;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: $fillBtnActive;
+    border-color: $fillBtnActive;
+  }
+}

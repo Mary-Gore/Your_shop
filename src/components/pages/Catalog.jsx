@@ -33,11 +33,11 @@ const Catalog = () => {
     dispatch = useDispatch();
 
   /* Добавление и удаление значения checkbox из store - filteredBrands */
-  const handleCheckbox = checkbox => {
-    if (filteredBrands.includes(checkbox.value)) {
-      dispatch(removeFilteredBrands(checkbox.value));
+  const handleCheckbox = e => {
+    if (filteredBrands.includes(e.target.value)) {
+      dispatch(removeFilteredBrands(e.target.value));
     } else {
-      dispatch(setFilteredBrands(checkbox.value));
+      dispatch(setFilteredBrands(e.target.value));
     }
   };
 
@@ -102,7 +102,8 @@ const Catalog = () => {
                 <li className="filter-item" key={index}>
                   <input
                     type="checkbox"
-                    onChange={e => handleCheckbox(e.target)}
+                    onChange={handleCheckbox}
+                    value={brand}
                     checked={getCheckedBrands(brand)}
                     id={`check-${index + 1}`}
                     className="custom-checkbox"
@@ -119,6 +120,7 @@ const Catalog = () => {
                 <input
                   type="checkbox"
                   onChange={e => handleCheckbox(e.target)}
+                  value={color}
                   checked={getCheckedColors(color)}
                   id={`check-${index + 1}`}
                   className="filter-colors__custom-checkbox custom-checkbox"

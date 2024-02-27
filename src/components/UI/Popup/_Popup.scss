@@ -1,20 +1,26 @@
-.popup {
-  &__content {
-    position: absolute;
-    margin-top: 30px;
-    padding: 20px;
-    box-shadow: 10px 4px 15px rgba(11, 43, 61, .2);
-    background-color: #fff;
-    min-width: 260px;
-    max-width: 315px;
-    z-index: 9;
-  }
+.popup-content {
+  position: absolute;
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: 10px 4px 15px rgba(11, 43, 61, .2);
+  background-color: #fff;
+  min-width: 260px;
+  max-width: 315px;
+  z-index: 9;
+}
 
-  &__content.filter {
-    left: 0;
-  }
+.filter__popup-content {
+  left: 0;
+}
 
-  &__content.sort {
-    right: 0;
-  }
+.sort__popup-content {
+  right: 0;
+}
+
+.params__popup-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

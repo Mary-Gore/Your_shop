@@ -100,4 +100,51 @@
     text-align: center;
     font: $mainText;
   }
+
+  .popup-params-title {
+    margin-bottom: 10px;
+    font: 600 16px / 1 Lato, sans-serif;
+  }
+
+  .popup-sizes-list {
+    display: flex;
+
+    &__item {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .size-block {
+    display: inline-flex;
+    font: $mainText;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 40px;
+    border: 1px solid $iconsGray;
+  }
+
+  .popup-colors-wrap {
+    margin-top: 20px;
+  }
+
+  .popup-colors-list {
+    display: flex;
+
+    &__item {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .params {
+    &__color-block {
+      display: inline-flex;
+      width: 40px;
+      height: 30px;
+    }
+  }
 }

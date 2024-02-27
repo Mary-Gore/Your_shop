@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // React icons
 import { BiLoaderAlt } from 'react-icons/bi';
 import { FaCircle } from 'react-icons/fa';
 // Selectors
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
+import { addToCart } from '../cart/cartSlice';
 import {
   addBrand,
   addColor,
@@ -16,6 +17,8 @@ import {
 } from '../filter/filterSlice';
 // Components
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
+import Popup from '../../components/UI/Popup/Popup';
+import Modal from '../../components/UI/Modal/Modal';
 // My icons
 import newIcon from '../../icons/iconNew.svg';
 import IconFav from '../../components/UI/IconFav/IconFav';
@@ -33,7 +36,9 @@ const Products = () => {
     tempBrands = [],
     tempColors = [],
     filteredBrandsBase = useSelector(selectFilteredBrandsBase),
-    filteredColorsBase = useSelector(selectFilteredColorsBase);
+    filteredColorsBase = useSelector(selectFilteredColorsBase),
+    [isModalParamsOpen, setModalParamsOpen] = useState(false),
+    [prodPopup, setProdPopup] = useState({});
 
   useEffect(() => {
     dispatch(
@@ -101,13 +106,17 @@ const Products = () => {
         brandFilter = true;
       }
 
-      filteredColorsBase.forEach(color => {
-        product.colors.forEach(prodColor => {
-          if (prodColor === color) {
-            colorFilter = true;
-          }
+      if (filteredColorsBase.length !== 0) {
+        filteredColorsBase.forEach(color => {
+          product.colors.forEach(prodColor => {
+            if (prodColor === color) {
+              colorFilter = true;
+            }
+          });
         });
-      });
+      } else {
+        colorFilter = true;
+      }
     }
 
     /* Если параметры отсутствуют */
@@ -120,6 +129,15 @@ const Products = () => {
 
     return audienceFilter && prodCatFilter && brandFilter && colorFilter;
   });
+
+  const addToCartHandler = product => {
+    dispatch(addToCart(product));
+  };
+
+  const handleModal = prod => {
+    setProdPopup(prod);
+    setModalParamsOpen(true);
+  };
 
   return (
     <div className="products">
@@ -169,11 +187,43 @@ const Products = () => {
                 {prod.oldPrice && <p className="products__old-price">{`${prod.oldPrice} ₽`}</p>}
                 <p className="products__item-price">{`${prod.price} ₽`}</p>
               </div>
-              <ButtonStroke className="products__btn-stroke">В корзину</ButtonStroke>
+              <ButtonStroke className="products__btn-stroke" onClick={() => handleModal(prod)}>
+                В корзину
+              </ButtonStroke>
             </li>
           ))}
         </ul>
       )}
+      <Modal isOpen={isModalParamsOpen} onClose={() => setModalParamsOpen(false)}>
+        <div className="popup-sizes">
+          <div className="popup-sizes-wrap">
+            <h3 className="popup-params-title">Выберите размер:</h3>
+            <ul className="popup-sizes-list">
+              {Object.keys(prodPopup).length !== 0 &&
+                prodPopup.sizes.map((size, index) => (
+                  <li key={index} className="popup-sizes-list__item">
+                    <span className="params__size-block size-block">{size}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <div className="popup-colors-wrap">
+            <h3 className="popup-params-title">Выберите цвет:</h3>
+            <ul className="popup-colors-list">
+              {Object.keys(prodPopup).length !== 0 &&
+                prodPopup.colors.map((color, index) => (
+                  <li key={index} className="popup-colors-list__item">
+                    <span
+                      style={{ backgroundColor: color }}
+                      className="params__color-block color-block"
+                    ></span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+        <button>Готово</button>
+      </Modal>
     </div>
   );
 };

@@ -183,3 +183,9 @@ legend {
     }
   }
 }
+
+.color-block {
+  &_active {
+    border: 2px solid $iconsGray;
+  }
+}

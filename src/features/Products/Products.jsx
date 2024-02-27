@@ -38,7 +38,10 @@ const Products = () => {
     filteredBrandsBase = useSelector(selectFilteredBrandsBase),
     filteredColorsBase = useSelector(selectFilteredColorsBase),
     [isModalParamsOpen, setModalParamsOpen] = useState(false),
-    [prodPopup, setProdPopup] = useState({});
+    [prodModal, setProdModal] = useState({}),
+    [sizeModal, setSizeModal] = useState(''),
+    [colorModal, setColorModal] = useState(''),
+    [isActiveSize, setActiveSize] = useState(false);
 
   useEffect(() => {
     dispatch(
@@ -130,12 +133,13 @@ const Products = () => {
     return audienceFilter && prodCatFilter && brandFilter && colorFilter;
   });
 
-  const addToCartHandler = product => {
-    dispatch(addToCart(product));
+  const addToCartHandler = (product, color, size) => {
+    dispatch(addToCart({ ...product, color, size }));
+    setModalParamsOpen(false);
   };
 
   const handleModal = prod => {
-    setProdPopup(prod);
+    setProdModal(prod);
     setModalParamsOpen(true);
   };
 
@@ -195,34 +199,53 @@ const Products = () => {
         </ul>
       )}
       <Modal isOpen={isModalParamsOpen} onClose={() => setModalParamsOpen(false)}>
-        <div className="popup-sizes">
-          <div className="popup-sizes-wrap">
-            <h3 className="popup-params-title">Выберите размер:</h3>
-            <ul className="popup-sizes-list">
-              {Object.keys(prodPopup).length !== 0 &&
-                prodPopup.sizes.map((size, index) => (
-                  <li key={index} className="popup-sizes-list__item">
-                    <span className="params__size-block size-block">{size}</span>
-                  </li>
-                ))}
-            </ul>
-          </div>
-          <div className="popup-colors-wrap">
-            <h3 className="popup-params-title">Выберите цвет:</h3>
-            <ul className="popup-colors-list">
-              {Object.keys(prodPopup).length !== 0 &&
-                prodPopup.colors.map((color, index) => (
-                  <li key={index} className="popup-colors-list__item">
+        <div className="modal-sizes">
+          <div className="modal-sizes-wrap">
+            <h3 className="modal-params-title">Выберите размер:</h3>
+            <ul className="modal-sizes-list">
+              {Object.keys(prodModal).length !== 0 &&
+                prodModal.sizes.map((size, index) => (
+                  <li key={index} className="modal-sizes-list__item">
                     <span
-                      style={{ backgroundColor: color }}
-                      className="params__color-block color-block"
-                    ></span>
+                      className={
+                        sizeModal === size
+                          ? 'params__size-block params__size-block_active size-block'
+                          : 'params__size-block size-block'
+                      }
+                      onClick={() => setSizeModal(size)}
+                    >
+                      {size}
+                    </span>
                   </li>
                 ))}
             </ul>
           </div>
         </div>
-        <button>Готово</button>
+        <div className="modal-colors-wrap">
+          <h3 className="modal-params-title">Выберите цвет:</h3>
+          <ul className="modal-colors-list">
+            {Object.keys(prodModal).length !== 0 &&
+              prodModal.colors.map((color, index) => (
+                <li key={index} className="modal-colors-list__item">
+                  <span
+                    style={{ backgroundColor: color }}
+                    className={
+                      colorModal === color
+                        ? 'params__color-block color-block color-block_active'
+                        : 'params__color-block color-block'
+                    }
+                    onClick={() => setColorModal(color)}
+                  ></span>
+                </li>
+              ))}
+          </ul>
+        </div>
+        <button
+          className="modal-sucess-btn"
+          onClick={() => addToCartHandler(prodModal, colorModal, sizeModal)}
+        >
+          Готово
+        </button>
       </Modal>
     </div>
   );

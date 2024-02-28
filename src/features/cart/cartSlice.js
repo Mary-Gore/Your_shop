@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 
 const initialState = {
   cartItems: [],
-  totalQuantitty: 0,
+  totalQuantity: 0,
   totalPrice: 0,
 };
 
@@ -21,7 +22,55 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      return state.cartItems.filter(itemCart => itemCart !== action.payload);
+      const removedItems = state.cartItems.filter(
+        cartItem => cartItem.vendor !== action.payload.vendor,
+      );
+      return { ...state, cartItems: removedItems };
+    },
+    plusQuantity: (state, action) => {
+      const itemIndex = state.cartItems.findIndex(item => item.vendor === action.payload.vendor);
+      state.cartItems[itemIndex].cartQuantity += 1;
+    },
+    minusQuantity: (state, action) => {
+      const itemIndex = state.cartItems.findIndex(item => item.vendor === action.payload.vendor);
+      if (state.cartItems[itemIndex].cartQuantity > 1) {
+        state.cartItems[itemIndex].cartQuantity -= 1;
+      } else if (state.cartItems[itemIndex].cartQuantity === 1) {
+        const removedItems = state.cartItems.filter(
+          cartItem => cartItem.vendor !== action.payload.vendor,
+        );
+        return { ...state, cartItems: removedItems };
+      }
+    },
+    sumTotalQuantity: state => {
+      state.cartItems.forEach(cartItem => {
+        state.totalQuantity += cartItem.cartQuantity;
+      });
+    },
+    minusTotalQuantity: state => {
+      state.cartItems.forEach(cartItem => {
+        state.totalQuantity -= cartItem.cartQuantity;
+      });
+    },
+    getTotals: (state, action) => {
+      const { total, quantity } = state.cartItems.reduce(
+        (cartTotal, cartItem) => {
+          const { price, cartQuantity } = cartItem,
+            priceItemTotal = price * cartQuantity;
+
+          cartTotal.total += priceItemTotal;
+          cartTotal.quantity += cartQuantity;
+
+          return cartTotal;
+        },
+        /* initial values */
+        {
+          total: 0,
+          quantity: 0,
+        },
+      );
+      state.totalPrice = total;
+      state.totalQuantity = quantity;
     },
   },
 });
@@ -30,7 +79,17 @@ const cartSlice = createSlice({
 export default cartSlice.reducer;
 
 // Actions
-export const { addToCart } = cartSlice.actions;
+export const {
+  addToCart,
+  plusQuantity,
+  minusQuantity,
+  sumTotalQuantity,
+  minusTotalQuantity,
+  removeFromCart,
+  getTotals,
+} = cartSlice.actions;
 
 // Selectors
 export const selectCartItems = state => state.cart.cartItems;
+export const selectTotalQuantity = state => state.cart.totalQuantity;
+export const selectTotalPrice = state => state.cart.totalPrice;

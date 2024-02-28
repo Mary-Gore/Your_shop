@@ -4,28 +4,38 @@
     align-items: center;
   }
 
-  &__titles-wrap {
+  &__header-title-wrap {
     grid-column: span 5;
   }
 
-  &__header-title-wrap {
-    grid-column: span 3;
+  &__header-title-info {
+    display: flex;
   }
 
   &__title-icon-wrap {
     display: flex;
     align-items: center;
     width: 375px;
-
-    svg {
-      margin-left: auto;
-      fill: $iconsGray;
-    }
   }
 
   &__header-title {
+    margin-right: 15px;
     font: 500 28px/1.5 Lato, sans-serif;
     max-width: 275px;
+  }
+
+  &__quantity-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font: 700 14px/1 Lato, sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L24.3161 5.30057L30.8128 3.17493L31.5781 9.96753L38.1926 11.6917L35.1641 17.8197L39.7964 22.8463L33.9356 26.3642L35.115 33.0972L28.2826 32.888L25.6347 39.1899L20 35.32L14.3653 39.1899L11.7174 32.888L4.88501 33.0972L6.06444 26.3642L0.203571 22.8463L4.83594 17.8197L1.80736 11.6917L8.42192 9.96753L9.18718 3.17493L15.6839 5.30057L20 0Z' fill='%2301AB8D'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   &__header-subtitle {
@@ -55,6 +65,14 @@
   &__left-info {
     display: flex;
     grid-column: span 5;
+  }
+
+  &__icon-close {
+    margin-left: auto;
+
+    svg {
+      fill: $iconsGray;
+    }
   }
 
   &__right-info {
@@ -142,5 +160,14 @@
   &__item-price {
     text-align: right;
     font: $prodPrice;
+  }
+
+  &__total {
+    text-transform: uppercase;
+    font: 700 18px/1 Lato, sans-serif;
+
+    span {
+      color: $accent;
+    }
   }
 }

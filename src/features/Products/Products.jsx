@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // React icons
 import { BiLoaderAlt } from 'react-icons/bi';
-import { FaCircle } from 'react-icons/fa';
 // Selectors
 import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
 import { addToCart } from '../cart/cartSlice';
@@ -17,13 +16,13 @@ import {
 } from '../filter/filterSlice';
 // Components
 import ButtonStroke from '../../components/UI/Button/ButtonStroke';
-import Popup from '../../components/UI/Popup/Popup';
 import Modal from '../../components/UI/Modal/Modal';
 // My icons
 import newIcon from '../../icons/iconNew.svg';
 import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import { useParams } from 'react-router-dom';
+import RoundColor from '../../components/UI/RoundColor/RoundColor';
 
 const Products = () => {
   const products = useSelector(selectProducts),
@@ -40,8 +39,7 @@ const Products = () => {
     [isModalParamsOpen, setModalParamsOpen] = useState(false),
     [prodModal, setProdModal] = useState({}),
     [sizeModal, setSizeModal] = useState(''),
-    [colorModal, setColorModal] = useState(''),
-    [isActiveSize, setActiveSize] = useState(false);
+    [colorModal, setColorModal] = useState('');
 
   useEffect(() => {
     dispatch(
@@ -176,14 +174,11 @@ const Products = () => {
               <h2 className="products__item-title">{prod.title}</h2>
               <span className="products__colors-wrapper">
                 {prod.colors.map((color, index) => (
-                  <FaCircle
+                  <RoundColor
                     key={index}
-                    style={{ color: color }}
-                    className={
-                      color === 'white'
-                        ? 'products__color-icon color-icon_white'
-                        : 'products__color-icon color-icon'
-                    }
+                    className={'products__color-icon'}
+                    style={{ backgroundColor: color }}
+                    color={color}
                   />
                 ))}
               </span>

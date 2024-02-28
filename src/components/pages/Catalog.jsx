@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import { FaCircle } from 'react-icons/fa';
 import Products from '../../features/products/Products';
 import ExtraMenu from '../ExtraMenu/ExtraMenu';
 import FIlterBtn from '../UI/FilterBtn/FilterBtn';
@@ -9,6 +8,7 @@ import SortBtn from '../UI/SortBtn/SortBtn';
 import ButtonFill from '../UI/Button/ButtonFill';
 import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
 import Popup from '../UI/Popup/Popup';
+import RoundColor from '../UI/RoundColor/RoundColor';
 import {
   selectBrands,
   selectFilteredBrands,
@@ -148,14 +148,10 @@ const Catalog = () => {
                     className="filter-colors__custom-checkbox custom-checkbox"
                   />
                   <label htmlFor={`color-check-${index + 1}`}>{handleColorName(color)}</label>
-                  <FaCircle
+                  <RoundColor
                     key={index}
-                    style={{ color: color }}
-                    className={
-                      color === 'white'
-                        ? 'filter__color-icon color-icon_white'
-                        : 'filter__color-icon color-icon'
-                    }
+                    style={{ backgroundColor: color }}
+                    className="filter__color-icon"
                   />
                 </li>
               ))}

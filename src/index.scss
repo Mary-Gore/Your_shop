@@ -9,13 +9,13 @@
 @import "./features/Products/Products";
 @import "./components/pages/Catalog";
 @import "./components/Product/Product";
-
+@import "./features/Cart/Cart";
 /* import small components */
 @import "./components/TopBar/TopBar";
 @import "./components/MainMenu/MainMenu";
 @import "./components/ExtraMenu/ExtraMenu";
 @import "./components/Product/Product";
-@import "./components/UI/CartFavoriteBtns/CartFavoriteBtns";
+@import "./components/UI/CartFavoriteLinks/CartFavoriteLinks";
 @import "./components/UI/Button/ButtonStroke";
 @import "./components/UI/Button/ButtonFill";
 @import "./components/UI/IconFav/IconFav";

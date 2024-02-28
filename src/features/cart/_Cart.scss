@@ -1,0 +1,146 @@
+.cart {
+  &__header-wrapper {
+    margin: 60px 0;
+    align-items: center;
+  }
+
+  &__titles-wrap {
+    grid-column: span 5;
+  }
+
+  &__header-title-wrap {
+    grid-column: span 3;
+  }
+
+  &__title-icon-wrap {
+    display: flex;
+    align-items: center;
+    width: 375px;
+
+    svg {
+      margin-left: auto;
+      fill: $iconsGray;
+    }
+  }
+
+  &__header-title {
+    font: 500 28px/1.5 Lato, sans-serif;
+    max-width: 275px;
+  }
+
+  &__header-subtitle {
+    font: 600 14px/1 Lato, sans-serif;
+    text-transform: uppercase;
+  }
+
+  &__right-subtitles-wrap {
+    grid-column: span 7;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  &__quantity-subtitle {
+    grid-column: 3/4;
+  }
+
+  &__price-subtitle {
+    grid-column: 7/7;
+    text-align: right;
+  }
+
+  &__content {
+    margin-bottom: 60px;
+  }
+
+  &__left-info {
+    display: flex;
+    grid-column: span 5;
+  }
+
+  &__right-info {
+    grid-column: span 7;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+  }
+
+  &__counter-wrap {
+    grid-column: 3/7;
+  }
+
+  &__img-item {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__img-item-wrap {
+    margin-right: 45px;
+    max-width: 120px;
+  }
+
+  &__text-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font: $prodTitle;
+    color: $darkGray;
+  }
+
+  &__params-block {
+    margin-top: 20px;
+    display: flex;
+  }
+
+  &__size {
+    margin-right: 25px;
+    font: 500 14px/1 Lato, sans-serif;
+    color: $lightGrayText;
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    font: 500 14px/1 Lato, sans-serif;
+    color: $lightGrayText;
+  }
+
+  &__color-icon {
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__counter {
+    display: inline-flex;
+  }
+
+  &__counter-amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $iconsGray;
+    font: $mainText;
+    color: $darkGray;
+  }
+
+  .counter-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $iconsGray;
+    background-color: rgba(190, 204, 206, .2);
+    width: 30px;
+    height: 30px;
+  }
+
+  &__item-price {
+    text-align: right;
+    font: $prodPrice;
+  }
+}

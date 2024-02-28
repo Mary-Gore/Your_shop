@@ -1,9 +1,12 @@
-.cart-btns {
+.cart-links {
   display: flex;
   align-items: flex-end;
 
-  &__favorite-icon {
+  &__favorite-link {
     margin-right: 15px;
+  }
+
+  &__favorite-icon {
     fill: none;
     width: 25px;
     transition: transform 0.3s ease;

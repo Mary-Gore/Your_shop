@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 import TopBar from '../components/TopBar/TopBar';
 import LogoBlack from '../components/Logo/LogoBlack';
 import MainMenu from '../components/MainMenu/MainMenu';
-import CartFavoriteBtns from '../components/UI/CartFavoriteBtns/CartFavoriteBtns';
+import CartFavoriteLinks from '../components/UI/CartFavoriteLinks/CartFavoriteLinks';
 
 const MainLayout = () => {
   return (
@@ -14,7 +14,7 @@ const MainLayout = () => {
             <LogoBlack />
           </Link>
           <MainMenu />
-          <CartFavoriteBtns />
+          <CartFavoriteLinks />
         </div>
       </header>
       <Outlet />

@@ -33,4 +33,4 @@ export default cartSlice.reducer;
 export const { addToCart } = cartSlice.actions;
 
 // Selectors
-export const selectCartItems = state => state.cartItems;
+export const selectCartItems = state => state.cart.cartItems;

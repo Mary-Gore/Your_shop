@@ -5,8 +5,6 @@ import {
   plusQuantity,
   selectCartItems,
   selectTotalQuantity,
-  sumTotalQuantity,
-  minusTotalQuantity,
   removeFromCart,
   getTotals,
   selectTotalPrice,
@@ -41,8 +39,8 @@ const Cart = () => {
         </div>
       </div>
       {cartItems.length > 0 &&
-        cartItems.map(cartItem => (
-          <div key={cartItem.vendor} className="cart__content grid">
+        cartItems.map((cartItem, index) => (
+          <div key={index} className="cart__content grid">
             <div className="cart__left-info">
               <div className="cart__img-item-wrap">
                 <img

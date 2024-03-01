@@ -1,6 +1,10 @@
-const Modal = ({ isOpen, children, onClose }) => {
+const Modal = ({ isOpen, children, onClose, resetColor, resetSize }) => {
   const onWrapperClick = e => {
-    if (e.target.classList.contains('modal__wrapper')) onClose();
+    if (e.target.classList.contains('modal__wrapper')) {
+      onClose();
+      resetColor();
+      resetSize();
+    }
   };
   return (
     <>

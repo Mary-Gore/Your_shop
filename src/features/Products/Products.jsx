@@ -134,6 +134,8 @@ const Products = () => {
   const addToCartHandler = (product, color, size) => {
     dispatch(addToCart({ ...product, color, size }));
     setModalParamsOpen(false);
+    setColorModal('');
+    setSizeModal('');
   };
 
   const handleModal = prod => {
@@ -193,7 +195,12 @@ const Products = () => {
           ))}
         </ul>
       )}
-      <Modal isOpen={isModalParamsOpen} onClose={() => setModalParamsOpen(false)}>
+      <Modal
+        isOpen={isModalParamsOpen}
+        onClose={() => setModalParamsOpen(false)}
+        resetColor={() => setColorModal('')}
+        resetSize={() => setSizeModal('')}
+      >
         <div className="modal-sizes">
           <div className="modal-sizes-wrap">
             <h3 className="modal-params-title">Выберите размер:</h3>

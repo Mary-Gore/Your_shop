@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
 
 const initialState = {
-  cartItems: [],
+  cartItems: JSON.parse(localStorage.getItem('cartItems'))
+    ? JSON.parse(localStorage.getItem('cartItems'))
+    : [],
   totalQuantity: 0,
   totalPrice: 0,
 };
@@ -12,47 +13,52 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const itemIndex = state.cartItems.findIndex(item => item.vendor === action.payload.vendor);
+      const itemIndex = state.cartItems.findIndex(
+        cartItem =>
+          cartItem.vendor === action.payload.vendor &&
+          cartItem.color === action.payload.color &&
+          cartItem.size === action.payload.size,
+      );
       /* Если совпадение найдено */
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
       } else {
-        const tempProduct = { ...action.payload, cartQuantity: 1 };
-        state.cartItems.push(tempProduct);
+        state.cartItems.push({ ...action.payload, cartQuantity: 1 });
       }
+
+      state.cartItems.forEach((cartItem, index) => {
+        cartItem.cartId = index;
+      });
+
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     removeFromCart: (state, action) => {
       const removedItems = state.cartItems.filter(
-        cartItem => cartItem.vendor !== action.payload.vendor,
+        cartItem => cartItem.cartId !== action.payload.cartId,
       );
+
+      localStorage.setItem('cartItems', JSON.stringify({ ...state, cartItems: removedItems }));
       return { ...state, cartItems: removedItems };
     },
     plusQuantity: (state, action) => {
-      const itemIndex = state.cartItems.findIndex(item => item.vendor === action.payload.vendor);
+      const itemIndex = state.cartItems.findIndex(item => item.cartId === action.payload.cartId);
       state.cartItems[itemIndex].cartQuantity += 1;
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     minusQuantity: (state, action) => {
-      const itemIndex = state.cartItems.findIndex(item => item.vendor === action.payload.vendor);
+      const itemIndex = state.cartItems.findIndex(item => item.cartId === action.payload.cartId);
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const removedItems = state.cartItems.filter(
-          cartItem => cartItem.vendor !== action.payload.vendor,
+          cartItem => cartItem.cartId !== action.payload.cartId,
         );
+        localStorage.setItem('cartItems', JSON.stringify({ ...state, cartItems: removedItems }));
         return { ...state, cartItems: removedItems };
       }
     },
-    sumTotalQuantity: state => {
-      state.cartItems.forEach(cartItem => {
-        state.totalQuantity += cartItem.cartQuantity;
-      });
-    },
-    minusTotalQuantity: state => {
-      state.cartItems.forEach(cartItem => {
-        state.totalQuantity -= cartItem.cartQuantity;
-      });
-    },
-    getTotals: (state, action) => {
+    getTotals: state => {
       const { total, quantity } = state.cartItems.reduce(
         (cartTotal, cartItem) => {
           const { price, cartQuantity } = cartItem,

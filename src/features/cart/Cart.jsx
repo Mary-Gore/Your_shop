@@ -95,7 +95,7 @@ const Cart = () => {
           </div>
         ))}
       <div className="cart__total">
-        Итого: <span>{totalPrice}</span>
+        Итого: <span>{totalPrice} ₽</span>
       </div>
     </div>
   );

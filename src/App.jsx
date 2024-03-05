@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Catalog from './components/pages/Catalog';
+import Catalog from './components/pages/Catalog/Catalog';
 import Product from './components/Product/Product';
 import Cart from './features/cart/Cart';
 

@@ -23,6 +23,7 @@ import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import { useParams } from 'react-router-dom';
 import RoundColor from '../../components/UI/RoundColor/RoundColor';
+import ProductsCard from '../../components/ProductCard/ProductsCard';
 
 const Products = () => {
   const products = useSelector(selectProducts),
@@ -139,6 +140,7 @@ const Products = () => {
   };
 
   const handleModal = prod => {
+    console.log('prod', prod);
     setProdModal(prod);
     setModalParamsOpen(true);
   };
@@ -152,7 +154,8 @@ const Products = () => {
       )}
       {filteredProds.length > 0 && (
         <ul className="products__list">
-          {filteredProds.map(prod => (
+          {
+            /*filteredProds.map(prod => (
             <li className="products__item" key={prod.vendor}>
               <span
                 className="favorite-icon-wrap"
@@ -192,7 +195,16 @@ const Products = () => {
                 В корзину
               </ButtonStroke>
             </li>
-          ))}
+                )) */
+            filteredProds.map(product => (
+              <ProductsCard
+                key={product.vendor}
+                prod={product}
+                handleToggleFavorite={() => handleToggleFavorite(product.vendor)}
+                handleModal={handleModal}
+              />
+            ))
+          }
         </ul>
       )}
       <Modal

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import Products from '../../features/products/Products';
-import ExtraMenu from '../ExtraMenu/ExtraMenu';
-import FIlterBtn from '../UI/FilterBtn/FilterBtn';
-import SortBtn from '../UI/SortBtn/SortBtn';
-import ButtonFill from '../UI/Button/ButtonFill';
-import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
-import Popup from '../UI/Popup/Popup';
-import RoundColor from '../UI/RoundColor/RoundColor';
+import Products from '../../../features/products/Products';
+import ExtraMenu from '../../ExtraMenu/ExtraMenu';
+import FIlterBtn from '../../UI/FilterBtn/FilterBtn';
+import SortBtn from '../../UI/SortBtn/SortBtn';
+import ButtonFill from '../../UI/Button/ButtonFill';
+import Breadcrumbs from '../../UI/Breadcrumbs/Breadcrumbs';
+import Popup from '../../UI/Popup/Popup';
+import RoundColor from '../../UI/RoundColor/RoundColor';
 import {
   selectBrands,
   selectFilteredBrands,
@@ -23,7 +23,7 @@ import {
   setFilteredColors,
   copyFilteredColors,
   copyFilteredColorsBase,
-} from '../../features/filter/filterSlice';
+} from '../../../features/filter/filterSlice';
 
 const Catalog = () => {
   const categories = useParams(),

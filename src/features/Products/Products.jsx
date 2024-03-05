@@ -23,7 +23,7 @@ import IconFav from '../../components/UI/IconFav/IconFav';
 import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import { useParams } from 'react-router-dom';
 import RoundColor from '../../components/UI/RoundColor/RoundColor';
-import ProductsCard from '../../components/ProductCard/ProductsCard';
+import ProductCard from '../../components/ProductCard/ProductCard';
 
 const Products = () => {
   const products = useSelector(selectProducts),
@@ -197,7 +197,7 @@ const Products = () => {
             </li>
                 )) */
             filteredProds.map(product => (
-              <ProductsCard
+              <ProductCard
                 key={product.vendor}
                 prod={product}
                 handleToggleFavorite={() => handleToggleFavorite(product.vendor)}

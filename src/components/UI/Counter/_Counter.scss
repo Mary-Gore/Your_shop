@@ -1,0 +1,24 @@
+.counter {
+  display: inline-flex;
+
+  &__amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $iconsGray;
+    font: $mainText;
+    color: $darkGray;
+  }
+}
+
+.counter-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $iconsGray;
+  background-color: rgba(190, 204, 206, .2);
+  width: 30px;
+  height: 30px;
+}

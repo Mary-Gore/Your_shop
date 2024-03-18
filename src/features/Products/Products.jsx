@@ -140,7 +140,6 @@ const Products = () => {
   };
 
   const handleModal = prod => {
-    console.log('prod', prod);
     setProdModal(prod);
     setModalParamsOpen(true);
   };
@@ -199,6 +198,7 @@ const Products = () => {
             filteredProds.map(product => (
               <ProductCard
                 key={product.vendor}
+                vendor={product.vendor}
                 prod={product}
                 handleToggleFavorite={() => handleToggleFavorite(product.vendor)}
                 handleModal={handleModal}

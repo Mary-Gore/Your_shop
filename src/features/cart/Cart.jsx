@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import {
-  minusQuantity,
-  plusQuantity,
   selectCartItems,
   selectTotalQuantity,
   removeFromCart,
   getTotals,
   selectTotalPrice,
+  minusQuantity,
+  plusQuantity,
 } from './cartSlice';
 import RoundColor from '../../components/UI/RoundColor/RoundColor';
 import { ReactComponent as IconClose } from '../../icons/iconClose.svg';
-import { ReactComponent as IconMinus } from '../../icons/iconMinus.svg';
-import { ReactComponent as IconPlus } from '../../icons/iconPlus.svg';
+import Counter from '../../components/UI/Counter/Counter';
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems),
@@ -23,6 +22,14 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cartItems]);
+
+  const decrement = cartItem => {
+    dispatch(minusQuantity(cartItem));
+  };
+
+  const increment = cartItem => {
+    dispatch(plusQuantity(cartItem));
+  };
 
   return (
     <div className="cart">
@@ -74,21 +81,7 @@ const Cart = () => {
             </div>
             <div className="cart__right-info">
               <div className="cart__counter-wrap">
-                <div className="cart__counter">
-                  <button
-                    className="cart__counter-minus-btn counter-btns"
-                    onClick={() => dispatch(minusQuantity(cartItem))}
-                  >
-                    <IconMinus />
-                  </button>
-                  <span className="cart__counter-amount">{cartItem.cartQuantity}</span>
-                  <button
-                    className="cart__counter-plus-btn counter-btns"
-                    onClick={() => dispatch(plusQuantity(cartItem))}
-                  >
-                    <IconPlus />
-                  </button>
-                </div>
+                <Counter cartItem={cartItem} increment={increment} decrement={decrement}></Counter>
               </div>
               <div className="cart__item-price">{cartItem.price * cartItem.cartQuantity} ₽</div>
             </div>

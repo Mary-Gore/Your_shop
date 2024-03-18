@@ -1,6 +1,6 @@
 const RoundColor = ({ className, color, style }) => {
   return (
-    <span
+    <li
       style={style}
       className={
         color === 'white'
@@ -11,7 +11,7 @@ const RoundColor = ({ className, color, style }) => {
             ? `${className} color-icon`
             : 'color-icon'
       }
-    ></span>
+    ></li>
   );
 };
 

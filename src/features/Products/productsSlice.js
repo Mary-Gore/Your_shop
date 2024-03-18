@@ -1,4 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
+
+const id = uuidv4();
 
 const initialState = {
   products: [],
@@ -9,7 +12,7 @@ export const fetchProds = createAsyncThunk('products/fetchProds', async (url, th
   try {
     const res = await fetch(url);
     let data = await res.json();
-    data = data.map(item => ({ ...item, isFavorite: false }));
+    data = data.map(item => ({ ...item, isFavorite: false, id: id }));
     return data;
   } catch (error) {
     console.log(error);

@@ -5,5 +5,37 @@
 
 .prod-info {
   grid-column: 5 span;
-  background-color: blue;
+  justify-self: flex-end;
+}
+
+.product {
+  &__color {
+    width: 45px;
+    height: 45px;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  &__colors-list {
+    display: flex;
+  }
+
+  &__order-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-stroke {
+    margin-right: 25px;
+  }
+
+  &__btn-fill {
+    min-width: 168px !important;
+  }
+
+  &__counter {
+    margin-right: 25px;
+  }
 }

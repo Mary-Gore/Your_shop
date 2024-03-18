@@ -4,8 +4,9 @@ import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import RoundColor from '../UI/RoundColor/RoundColor';
 import newIcon from '../../icons/iconNew.svg';
+import { Link } from 'react-router-dom';
 
-const ProductsCard = ({ prod, handleToggleFavorite, handleModal }) => {
+const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
   return (
     <>
       <li className="product-card">
@@ -17,16 +18,20 @@ const ProductsCard = ({ prod, handleToggleFavorite, handleModal }) => {
           )}
         </span>
 
-        <div className="product-card__img-wrap">
-          <img src={`/img/products/${prod.preview}`} alt="product img" />
-        </div>
+        <Link to={`./product/${vendor}`}>
+          <div className="product-card__img-wrap">
+            <img src={`/img/products/${prod.preview}`} alt="product img" />
+          </div>
+        </Link>
 
         {prod.actual === 'new' && (
           <img className="product-card__new-icon new-icon" src={newIcon} alt="icon new" />
         )}
 
-        <h2 className="product-card__title">{prod.title}</h2>
-        <span className="product-card__colors-wrapper">
+        <Link to={`./product/${vendor}`}>
+          <h2 className="product-card__title">{prod.title}</h2>
+        </Link>
+        <ul className="product-card__colors-list colors-list">
           {prod.colors.map((color, index) => (
             <RoundColor
               key={index}
@@ -35,7 +40,7 @@ const ProductsCard = ({ prod, handleToggleFavorite, handleModal }) => {
               color={color}
             />
           ))}
-        </span>
+        </ul>
         <div className="product-card__price-wrap">
           {prod.oldPrice && <p className="product-card__old-price">{`${prod.oldPrice} ₽`}</p>}
           <p className="product-card__price">{`${prod.price} ₽`}</p>

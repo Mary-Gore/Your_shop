@@ -11,7 +11,7 @@ import {
 } from './cartSlice';
 import RoundColor from '../../components/UI/RoundColor/RoundColor';
 import { ReactComponent as IconClose } from '../../icons/iconClose.svg';
-import Counter from '../../components/UI/Counter/Counter';
+import Counter from '../../features/counter/Counter';
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems),

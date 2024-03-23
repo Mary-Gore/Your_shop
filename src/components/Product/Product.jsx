@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectProducts } from '../../features/products/productsSlice';
-import Counter from '../UI/Counter/Counter';
+import Counter from '../../features/counter/Counter';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import ButtonFill from '../UI/Button/ButtonFill';
 
@@ -43,7 +43,7 @@ const Product = () => {
               ))}
             </ul>
           </div>
-          <span className="product__price">{totalSum} ₽</span>
+          <span className="product__price">{product.price} ₽</span>
           <div className="product__order-block">
             <Counter cartItem={product} price={product.price} setTotalSum={setTotalSum}></Counter>
             <ButtonStroke className="product__btn-stroke">В корзину</ButtonStroke>

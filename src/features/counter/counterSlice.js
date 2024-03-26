@@ -10,7 +10,8 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     decrementCounter: (state, action) => {
-      state.productItem = { ...action.payload, quantity: (state.quantity -= 1) };
+      if (state.quantity > 1)
+        state.productItem = { ...action.payload, quantity: (state.quantity -= 1) };
     },
     incrementCounter: (state, action) => {
       state.productItem = { ...action.payload, quantity: (state.quantity += 1) };

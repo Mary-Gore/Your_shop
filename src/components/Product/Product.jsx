@@ -5,13 +5,14 @@ import { selectProducts } from '../../features/products/productsSlice';
 import Counter from '../../features/counter/Counter';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import ButtonFill from '../UI/Button/ButtonFill';
+import { selectCounterQuantity } from '../../features/counter/counterSlice';
 
 const Product = () => {
   const vendor = Number(useParams().vendor),
     products = useSelector(selectProducts),
+    quantity = useSelector(selectCounterQuantity),
     prodIndex = products.findIndex(prod => prod.vendor === vendor),
-    product = products[prodIndex],
-    [totalSum, setTotalSum] = useState(product.price);
+    product = products[prodIndex];
 
   return (
     <div className="product">
@@ -43,9 +44,9 @@ const Product = () => {
               ))}
             </ul>
           </div>
-          <span className="product__price">{product.price} ₽</span>
+          <span className="product__price">{product.price * quantity} ₽</span>
           <div className="product__order-block">
-            <Counter cartItem={product} price={product.price} setTotalSum={setTotalSum}></Counter>
+            <Counter cartItem={product}></Counter>
             <ButtonStroke className="product__btn-stroke">В корзину</ButtonStroke>
             <ButtonFill className="product__btn-fill">Быстрый заказ</ButtonFill>
           </div>

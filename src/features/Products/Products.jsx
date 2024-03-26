@@ -15,14 +15,9 @@ import {
   removeAllColors,
 } from '../filter/filterSlice';
 // Components
-import ButtonStroke from '../../components/UI/Button/ButtonStroke';
 import Modal from '../../components/UI/Modal/Modal';
 // My icons
-import newIcon from '../../icons/iconNew.svg';
-import IconFav from '../../components/UI/IconFav/IconFav';
-import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import { useParams } from 'react-router-dom';
-import RoundColor from '../../components/UI/RoundColor/RoundColor';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
 const Products = () => {

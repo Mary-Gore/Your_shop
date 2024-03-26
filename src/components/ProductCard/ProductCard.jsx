@@ -4,9 +4,12 @@ import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import RoundColor from '../UI/RoundColor/RoundColor';
 import newIcon from '../../icons/iconNew.svg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
+  const audience = useParams().audience,
+    category = useParams()['prod_category'];
+  console.log(audience);
   return (
     <>
       <li className="product-card">
@@ -18,7 +21,15 @@ const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
           )}
         </span>
 
-        <Link to={`./product/${vendor}`}>
+        <Link
+          to={
+            audience && !category
+              ? `${prod.category}/${vendor}`
+              : audience && category
+                ? `${vendor}`
+                : `${prod.audience}/${prod.category}/${vendor}`
+          }
+        >
           <div className="product-card__img-wrap">
             <img src={`/img/products/${prod.preview}`} alt="product img" />
           </div>
@@ -28,7 +39,15 @@ const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
           <img className="product-card__new-icon new-icon" src={newIcon} alt="icon new" />
         )}
 
-        <Link to={`./product/${vendor}`}>
+        <Link
+          to={
+            audience && !category
+              ? `${prod.category}/${vendor}`
+              : audience && category
+                ? `${vendor}`
+                : `${prod.audience}/${prod.category}/${vendor}`
+          }
+        >
           <h2 className="product-card__title">{prod.title}</h2>
         </Link>
         <ul className="product-card__colors-list colors-list">

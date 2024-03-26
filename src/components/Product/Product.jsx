@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
 import { selectProducts } from '../../features/products/productsSlice';
 import Counter from '../../features/counter/Counter';
 import ButtonStroke from '../UI/Button/ButtonStroke';
@@ -30,6 +31,7 @@ const Product = () => {
 
   return (
     <div className="product">
+      <Breadcrumbs />
       <div className="grid">
         <div className="prod-gallery"></div>
         <div className="prod-info">

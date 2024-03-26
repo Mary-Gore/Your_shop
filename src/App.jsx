@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route path="/:audience?/:prod_category?" element={<Catalog />} />
-            <Route path="/:audience?/:prod_category?/product/:vendor" element={<Product />} />
+            <Route path="/:audience?/:prod_category?/:vendor" element={<Product />} />
             <Route path="cart" element={<Cart />}></Route>
           </Route>
         </Routes>

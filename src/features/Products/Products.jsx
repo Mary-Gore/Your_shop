@@ -153,58 +153,15 @@ const Products = () => {
       )}
       {filteredProds.length > 0 && (
         <ul className="products__list">
-          {
-            /*filteredProds.map(prod => (
-            <li className="products__item" key={prod.vendor}>
-              <span
-                className="favorite-icon-wrap"
-                onClick={() => handleToggleFavorite(prod.vendor)}
-              >
-                {prod.isFavorite ? (
-                  <IconFavFill className="products__favorite-icon_fill favorite-icon_fill" />
-                ) : (
-                  <IconFav className="products__favorite-icon favorite-icon" />
-                )}
-              </span>
-
-              <div className="products__img-wrap">
-                <img src={`/img/products/${prod.preview}`} alt="product img" />
-              </div>
-
-              {prod.actual === 'new' && (
-                <img className="products__new-icon new-icon" src={newIcon} alt="icon new" />
-              )}
-
-              <h2 className="products__item-title">{prod.title}</h2>
-              <span className="products__colors-wrapper">
-                {prod.colors.map((color, index) => (
-                  <RoundColor
-                    key={index}
-                    className={'products__color-icon'}
-                    style={{ backgroundColor: color }}
-                    color={color}
-                  />
-                ))}
-              </span>
-              <div className="products__price-wrap">
-                {prod.oldPrice && <p className="products__old-price">{`${prod.oldPrice} ₽`}</p>}
-                <p className="products__item-price">{`${prod.price} ₽`}</p>
-              </div>
-              <ButtonStroke className="products__btn-stroke" onClick={() => handleModal(prod)}>
-                В корзину
-              </ButtonStroke>
-            </li>
-                )) */
-            filteredProds.map(product => (
-              <ProductCard
-                key={product.vendor}
-                vendor={product.vendor}
-                prod={product}
-                handleToggleFavorite={() => handleToggleFavorite(product.vendor)}
-                handleModal={handleModal}
-              />
-            ))
-          }
+          {filteredProds.map(product => (
+            <ProductCard
+              key={product.vendor}
+              vendor={product.vendor}
+              prod={product}
+              handleToggleFavorite={() => handleToggleFavorite(product.vendor)}
+              handleModal={handleModal}
+            />
+          ))}
         </ul>
       )}
       <Modal

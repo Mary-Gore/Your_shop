@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   productItem: {},
-  quantity: 0,
+  quantity: 1,
 };
 
 const counterSlice = createSlice({
@@ -16,6 +16,9 @@ const counterSlice = createSlice({
     incrementCounter: (state, action) => {
       state.productItem = { ...action.payload, quantity: (state.quantity += 1) };
     },
+    resetCounter: state => {
+      state.quantity = 1;
+    },
   },
 });
 
@@ -23,7 +26,7 @@ const counterSlice = createSlice({
 export default counterSlice.reducer;
 
 // Actions
-export const { decrementCounter, incrementCounter } = counterSlice.actions;
+export const { decrementCounter, incrementCounter, resetCounter } = counterSlice.actions;
 
 // Selectors
 export const selectCounterQuantity = state => state.counter.quantity;

@@ -19,7 +19,7 @@ const Counter = ({ cartItem, decrement, increment }) => {
         <IconMinus />
       </button>
       <span className="counter__amount">
-        {cartItem.cartQuantity ? cartItem.cartQuantity : quantity ? quantity : 1}
+        {cartItem.cartQuantity ? cartItem.cartQuantity : quantity}
       </span>
       <button
         className="counter__plus-btn counter-btns"

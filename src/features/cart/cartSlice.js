@@ -23,7 +23,11 @@ const cartSlice = createSlice({
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
       } else {
-        state.cartItems.push({ ...action.payload, cartQuantity: 1 });
+        if (!action.payload.prodQuantity) {
+          state.cartItems.push({ ...action.payload, cartQuantity: 1 });
+        } else {
+          state.cartItems.push({ ...action.payload, cartQuantity: action.payload.prodQuantity });
+        }
       }
 
       state.cartItems.forEach((cartItem, index) => {

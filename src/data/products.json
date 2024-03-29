@@ -13,7 +13,8 @@
       "sizes": ["XS", "S"],
       "price": 1499,
       "oldPrice": 1999,
-      "count": 45
+      "count": 45,
+      "detailsImgs": ["prod1.jpg", "prod1-2.jpg", "prod1-3.jpg"]
     },
     {
       "vendor": 246,
@@ -27,7 +28,8 @@
       "colors": ["blue", "black"],
       "sizes": ["XS", "S", "M"],
       "price": 1699,
-      "count": 170
+      "count": 170,
+      "detailsImgs": []
     },
     {
       "vendor": 247,
@@ -42,7 +44,8 @@
       "sizes": ["XS", "S", "M"],
       "price": 1999,
       "count": 270,
-      "actual": "new"
+      "actual": "new",
+      "detailsImgs": ["prod3.jpg", "prod3-2.jpg", "prod3-3.jpg"]
      },
     {
       "vendor": 248,

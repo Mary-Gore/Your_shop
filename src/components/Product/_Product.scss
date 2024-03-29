@@ -1,8 +1,3 @@
-.prod-gallery {
-  grid-column: 7 span;
-  background-color: aqua;
-}
-
 .prod-info {
   grid-column: 5 span;
   justify-self: flex-end;
@@ -62,5 +57,56 @@
 
   &__counter {
     margin-right: 25px;
+  }
+
+  .prod-gallery {
+    display: flex;
+    grid-column: 7 span;
+    max-height: 745px;
+
+    .preview-slider {
+      margin-right: 35px;
+      display: flex;
+      flex-direction: column;
+      width: 175px;
+      height: 745px;
+
+      &__img-wrap {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .main-slider {
+      height: 745px;
+
+      &__slide {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .swiper-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .swiper-slide {
+    border: 1px solid $iconsGray;
+  }
+
+  .swiper-slide-thumb-active img {
+    opacity: 0.5;
   }
 }

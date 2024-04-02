@@ -5,15 +5,18 @@ import ButtonStroke from '../UI/Button/ButtonStroke';
 import RoundColor from '../UI/RoundColor/RoundColor';
 import newIcon from '../../icons/iconNew.svg';
 import { Link, useParams } from 'react-router-dom';
+import { toggleFavorite } from '../../features/products/productsSlice';
+import { useDispatch } from 'react-redux';
 
-const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
+const ProductsCard = ({ prod, handleModal, vendor }) => {
   const audience = useParams().audience,
-    category = useParams()['prod_category'];
-  console.log(audience);
+    category = useParams()['prod_category'],
+    dispatch = useDispatch();
+
   return (
     <>
       <li className="product-card">
-        <span className="favorite-icon-wrap" onClick={() => handleToggleFavorite()}>
+        <span className="favorite-icon-wrap" onClick={() => dispatch(toggleFavorite(prod.vendor))}>
           {prod.isFavorite ? (
             <IconFavFill className="product-card__favorite-icon_fill favorite-icon_fill" />
           ) : (
@@ -40,6 +43,7 @@ const ProductsCard = ({ prod, handleToggleFavorite, handleModal, vendor }) => {
         )}
 
         <Link
+          className="product-card__link"
           to={
             audience && !category
               ? `${prod.category}/${vendor}`

@@ -147,6 +147,15 @@ legend {
   z-index: 5;
 }
 
+.favorite-icon {
+  fill: none;
+}
+
+.favorite-icon_fill {
+  fill: $favoriteHover;
+  stroke: $favoriteHover;
+}
+
 .custom-checkbox {
   position: absolute;
   z-index: -1;

@@ -9,14 +9,16 @@ import 'swiper/css';
 import Breadcrumbs from '../UI/Breadcrumbs/Breadcrumbs';
 import Counter from '../../features/counter/Counter';
 /* UI */
+import IconFav from '../UI/IconFav/IconFav';
+import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import ButtonFill from '../UI/Button/ButtonFill';
 /* Slices imports */
-import { selectProducts } from '../../features/products/productsSlice';
+import { selectProducts, toggleFavorite } from '../../features/products/productsSlice';
 import { resetCounter, selectCounterQuantity } from '../../features/counter/counterSlice';
 import { addToCart } from '../../features/cart/cartSlice';
 
-const Product = () => {
+const Product = ({ handleToggleFavorite }) => {
   const vendor = Number(useParams().vendor),
     products = useSelector(selectProducts),
     quantity = useSelector(selectCounterQuantity),
@@ -28,9 +30,13 @@ const Product = () => {
     [thumbs, setThumbs] = useState(null);
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, colorProduct, sizeProduct, prodQuantity: quantity }));
-    setColorProduct('');
-    setSizeProduct('');
+    if (sizeProduct && colorProduct) {
+      dispatch(
+        addToCart({ ...product, color: colorProduct, size: sizeProduct, prodQuantity: quantity }),
+      );
+      setColorProduct('');
+      setSizeProduct('');
+    }
   };
 
   useEffect(() => {
@@ -40,7 +46,7 @@ const Product = () => {
   return (
     <div className="product">
       <Breadcrumbs />
-      <div className="grid">
+      <div className="grid product-content">
         <div className="prod-gallery">
           <div className="prod-gallery__preview-wrap">
             {product.detailsImgs && (
@@ -63,6 +69,16 @@ const Product = () => {
             )}
           </div>
           <div className="prod-gallery__main-slider-wrap">
+            <span
+              className="favorite-icon-wrap"
+              onClick={() => dispatch(toggleFavorite(product.vendor))}
+            >
+              {product.isFavorite ? (
+                <IconFavFill className="product__favorite-icon_fill favorite-icon_fill" />
+              ) : (
+                <IconFav className="product_favorite-icon favorite-icon" />
+              )}
+            </span>
             <Swiper
               className="main-slider"
               direction={'vertical'}
@@ -91,7 +107,7 @@ const Product = () => {
           </div>
         </div>
         <div className="prod-info">
-          <h1>{product.title}</h1>
+          <h1 className="prod-info__title">{product.title}</h1>
           <div className="product__sizes">
             <p className="product__sizes-title">Размеры</p>
             <ul className="product__sizes-list">

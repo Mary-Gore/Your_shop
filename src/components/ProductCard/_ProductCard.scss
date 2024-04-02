@@ -4,6 +4,14 @@
   text-align: center;
   border: 1px solid $iconsGray;
 
+  &__link {
+    color: $darkGray;
+
+    &:visited {
+      color: $darkGray;
+    }
+  }
+
   &__title {
     margin: 0 auto 15px;
     font: $prodTitle;
@@ -53,7 +61,6 @@
   &__favorite-icon {
     width: 28px;
     height: 22px;
-    fill: none;
 
     &:hover {
       fill: $favoriteHover;
@@ -64,8 +71,6 @@
   &__favorite-icon_fill {
     width: 28px;
     height: 22px;
-    fill: $favoriteHover;
-    stroke: $favoriteHover;
   }
 
   &__old-price {

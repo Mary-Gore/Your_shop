@@ -84,10 +84,6 @@ const Products = () => {
     }
   }, [products, audience, prodCategory]);
 
-  const handleToggleFavorite = vendor => {
-    dispatch(toggleFavorite(vendor));
-  };
-
   const filteredProds = products.filter(product => {
     let audienceFilter = product.audience === audience,
       prodCatFilter = product.category === prodCategory,
@@ -128,10 +124,12 @@ const Products = () => {
   });
 
   const addToCartHandler = (product, color, size) => {
-    dispatch(addToCart({ ...product, color, size }));
-    setModalParamsOpen(false);
-    setColorModal('');
-    setSizeModal('');
+    if (color && size) {
+      dispatch(addToCart({ ...product, color, size }));
+      setModalParamsOpen(false);
+      setColorModal('');
+      setSizeModal('');
+    }
   };
 
   const handleModal = prod => {
@@ -153,7 +151,7 @@ const Products = () => {
               key={product.vendor}
               vendor={product.vendor}
               prod={product}
-              handleToggleFavorite={() => handleToggleFavorite(product.vendor)}
+              handleToggleFavorite={() => dispatch(toggleFavorite(product.vendor))}
               handleModal={handleModal}
             />
           ))}
@@ -208,7 +206,9 @@ const Products = () => {
         </div>
         <button
           className="modal-sucess-btn"
-          onClick={() => addToCartHandler(prodModal, colorModal, sizeModal)}
+          onClick={() => {
+            addToCartHandler(prodModal, colorModal, sizeModal);
+          }}
         >
           Готово
         </button>

@@ -5,7 +5,7 @@ import IconFav from '../IconFav/IconFav';
 const CartFavoriteBtns = () => {
   return (
     <div className="cart-links">
-      <Link className="cart-links__favorite-link">
+      <Link className="cart-links__favorite-link" to="./favorite_products">
         <IconFav className="cart-links__favorite-icon" />
       </Link>
       <Link to="cart" className="cart-links__cart-link">

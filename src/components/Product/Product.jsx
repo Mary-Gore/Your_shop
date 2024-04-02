@@ -14,7 +14,11 @@ import { ReactComponent as IconFavFill } from '../../icons/iconHeartFill.svg';
 import ButtonStroke from '../UI/Button/ButtonStroke';
 import ButtonFill from '../UI/Button/ButtonFill';
 /* Slices imports */
-import { selectProducts, toggleFavorite } from '../../features/products/productsSlice';
+import {
+  addToFavoriteProds,
+  selectProducts,
+  toggleFavorite,
+} from '../../features/products/productsSlice';
 import { resetCounter, selectCounterQuantity } from '../../features/counter/counterSlice';
 import { addToCart } from '../../features/cart/cartSlice';
 
@@ -71,7 +75,7 @@ const Product = ({ handleToggleFavorite }) => {
           <div className="prod-gallery__main-slider-wrap">
             <span
               className="favorite-icon-wrap"
-              onClick={() => dispatch(toggleFavorite(product.vendor))}
+              onClick={() => dispatch(addToFavoriteProds(product.vendor))}
             >
               {product.isFavorite ? (
                 <IconFavFill className="product__favorite-icon_fill favorite-icon_fill" />

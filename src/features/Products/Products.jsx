@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // React icons
 import { BiLoaderAlt } from 'react-icons/bi';
 // Selectors
-import { selectProducts, selectIsLoading, fetchProds, toggleFavorite } from './productsSlice';
+import { selectProducts, selectIsLoading, fetchProds, addToFavoriteProds } from './productsSlice';
 import { addToCart } from '../cart/cartSlice';
 import {
   addBrand,
@@ -137,6 +137,10 @@ const Products = () => {
     setModalParamsOpen(true);
   };
 
+  const handleFavorite = vendor => {
+    dispatch(addToFavoriteProds(vendor));
+  };
+
   return (
     <div className="products">
       {/*Оставить для SEO скрытым через стили <h1>Products</h1> */}
@@ -151,7 +155,7 @@ const Products = () => {
               key={product.vendor}
               vendor={product.vendor}
               prod={product}
-              handleToggleFavorite={() => dispatch(toggleFavorite(product.vendor))}
+              handleFavorite={handleFavorite}
               handleModal={handleModal}
             />
           ))}

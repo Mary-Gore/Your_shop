@@ -1,10 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 import { v4 as uuidv4 } from 'uuid';
 
 const id = uuidv4();
 
 const initialState = {
   products: [],
+  favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts'))
+    ? JSON.parse(localStorage.getItem('favoriteProducts'))
+    : [],
   isLoading: false,
 };
 
@@ -23,10 +27,10 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    toggleFavorite: (state, action) => {
-      state.products.forEach(prod => {
-        if (prod.vendor === action.payload) prod.isFavorite = !prod.isFavorite;
-      });
+    addToFavoriteProds: (state, action) => {
+      const favoriteProduct = state.products.filter(prod => prod.vendor === action.payload);
+      state.favoriteProducts.push(favoriteProduct);
+      localStorage.setItem('favoriteProducts', JSON.stringify({ ...favoriteProduct }));
     },
   },
   extraReducers: builder => {
@@ -49,8 +53,9 @@ const productsSlice = createSlice({
 export default productsSlice.reducer;
 
 //Actions
-export const { toggleFavorite } = productsSlice.actions;
+export const { addToFavoriteProds } = productsSlice.actions;
 
 // Selectors
 export const selectProducts = state => state.products.products;
 export const selectIsLoading = state => state.products.isLoading;
+export const selectFavoriteProducts = state => state.products.favoriteProducts;

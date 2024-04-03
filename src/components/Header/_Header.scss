@@ -3,4 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  .logo-black {
+    @include tablet {
+      width: 100px;
+    }
+  }
+
+  @include tablet {
+    flex-direction: column;
+  }
 }

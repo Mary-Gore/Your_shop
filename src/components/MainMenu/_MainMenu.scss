@@ -1,5 +1,6 @@
 .main-menu {
   margin-bottom: 45px;
+  display: flex;
 
   &__link {
     position: relative;
@@ -9,6 +10,15 @@
 
     &:not(:last-child) {
       margin-right: 70px;
+
+      @include tablet {
+        margin-right: 40px;
+      }
+
+      @include mobile-s {
+        margin-right: 0;
+        margin-bottom: 35px;
+      }
     }
 
     &:visited {
@@ -23,5 +33,17 @@
       height: 4px;
       background-color: $accent;
     }
+
+    @include tablet {
+      font-size: 15px;
+    }
+  }
+
+  @include tablet {
+    margin: 35px 0 40px;
+  }
+
+  @include mobile-s {
+    flex-direction: column;
   }
 }

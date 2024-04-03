@@ -110,19 +110,24 @@ legend {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: $grid-gap;
-}
 
-.header-wrapper {
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include mobile-m {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .content-bar-wrap {
   position: relative;
   margin-top: 60px;
   display: flex;
+
+  @include tablet {
+    margin-top: 40px;
+  }
 }
 
 
@@ -181,7 +186,7 @@ legend {
 .custom-checkbox {
   &:checked+label {
     &::before {
-      background-image: url("./icons/iconCheck.svg");
+      background-image: url("../icons/iconCheck.svg");
       background-color: $accent;
     }
   }

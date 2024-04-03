@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // React icons
 import { BiLoaderAlt } from 'react-icons/bi';
 // Selectors
-import { selectProducts, selectIsLoading, fetchProds, addToFavoriteProds } from './productsSlice';
+import { selectProducts, selectIsLoading, fetchProds, toggleFavoriteProds } from './productsSlice';
 import { addToCart } from '../cart/cartSlice';
 import {
   addBrand,
@@ -38,11 +38,13 @@ const Products = () => {
     [colorModal, setColorModal] = useState('');
 
   useEffect(() => {
-    dispatch(
-      fetchProds(
-        'https://your-shop-7be97-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-      ),
-    );
+    if (!JSON.parse(localStorage.getItem('productsIsFavorite'))) {
+      dispatch(
+        fetchProds(
+          'https://your-shop-7be97-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+        ),
+      );
+    }
   }, []);
 
   useEffect(() => {
@@ -138,7 +140,7 @@ const Products = () => {
   };
 
   const handleFavorite = vendor => {
-    dispatch(addToFavoriteProds(vendor));
+    dispatch(toggleFavoriteProds(vendor));
   };
 
   return (

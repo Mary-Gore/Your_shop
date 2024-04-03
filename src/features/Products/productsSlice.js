@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
 import { v4 as uuidv4 } from 'uuid';
 
 const id = uuidv4();
 
 const initialState = {
-  products: [],
+  products: JSON.parse(localStorage.getItem('productsIsFavorite'))
+    ? JSON.parse(localStorage.getItem('productsIsFavorite'))
+    : [],
   favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts'))
     ? JSON.parse(localStorage.getItem('favoriteProducts'))
     : [],
@@ -27,10 +28,35 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addToFavoriteProds: (state, action) => {
-      const favoriteProduct = state.products.filter(prod => prod.vendor === action.payload);
-      state.favoriteProducts.push(favoriteProduct);
-      localStorage.setItem('favoriteProducts', JSON.stringify({ ...favoriteProduct }));
+    toggleFavoriteProds: (state, action) => {
+      state.products.forEach(prod => {
+        if (prod.vendor === action.payload) {
+          prod.isFavorite = !prod.isFavorite;
+          localStorage.setItem(
+            'productsIsFavorite',
+            JSON.stringify({ products: [...state.products] }),
+          );
+        }
+      });
+
+      const indexProd = state.products.findIndex(prod => prod.vendor === action.payload),
+        favoriteProduct = state.products[indexProd];
+
+      const indexFav = state.favoriteProducts.findIndex(
+        favProd => favProd.vendor === action.payload,
+      );
+
+      if (indexFav >= 0) {
+        const removed = state.favoriteProducts.filter(favProd => favProd.vendor !== action.payload);
+        state.favoriteProducts = removed;
+      } else {
+        state.favoriteProducts.push(favoriteProduct);
+      }
+
+      localStorage.setItem(
+        'favoriteProducts',
+        JSON.stringify({ favoriteProducts: state.favoriteProducts }),
+      );
     },
   },
   extraReducers: builder => {
@@ -53,7 +79,7 @@ const productsSlice = createSlice({
 export default productsSlice.reducer;
 
 //Actions
-export const { addToFavoriteProds } = productsSlice.actions;
+export const { toggleFavoriteProds } = productsSlice.actions;
 
 // Selectors
 export const selectProducts = state => state.products.products;

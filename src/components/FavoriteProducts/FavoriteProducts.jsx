@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import ProductsCard from '../ProductCard/ProductCard';
-import {
-  addToFavoriteProds,
-  selectFavoriteProducts,
-  toggleFavorite,
-} from '../../features/products/productsSlice';
+import { toggleFavoriteProds, selectFavoriteProducts } from '../../features/products/productsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../UI/Modal/Modal';
 import { addToCart } from '../../features/cart/cartSlice';
@@ -31,6 +27,10 @@ const FavoriteProducts = () => {
     }
   };
 
+  const handleFavorite = vendor => {
+    dispatch(toggleFavoriteProds(vendor));
+  };
+
   return (
     <>
       <ul className="fav-products-list">
@@ -40,6 +40,7 @@ const FavoriteProducts = () => {
             vendor={product.vendor}
             prod={product}
             handleModal={handleModal}
+            handleFavorite={handleFavorite}
           />
         ))}
       </ul>

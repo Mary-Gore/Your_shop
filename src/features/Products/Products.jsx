@@ -37,8 +37,10 @@ const Products = () => {
     [sizeModal, setSizeModal] = useState(''),
     [colorModal, setColorModal] = useState('');
 
+  console.log(products);
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('productsIsFavorite'))) {
+    const storageProds = JSON.parse(localStorage.getItem('productsIsFavorite'));
+    if (!storageProds) {
       dispatch(
         fetchProds(
           'https://your-shop-7be97-default-rtdb.europe-west1.firebasedatabase.app/products.json',
@@ -58,7 +60,7 @@ const Products = () => {
       }
     });
 
-    /* Составление массива уник. названий брендов */
+    // Составление массива уник. названий брендов
     if (tempBrands.length !== 0) {
       const uniqueBrands = tempBrands.reduce((acc, brand) => {
         if (acc.includes(brand)) {
@@ -114,7 +116,7 @@ const Products = () => {
       }
     }
 
-    /* Если параметры отсутствуют */
+    // Если параметры отсутствуют
     if (!prodCategory) prodCatFilter = true;
     if (!audience) audienceFilter = true;
     if (!isFiltered) {
@@ -146,6 +148,7 @@ const Products = () => {
   return (
     <div className="products">
       {/*Оставить для SEO скрытым через стили <h1>Products</h1> */}
+
       {isLoading && <BiLoaderAlt className="preloader" />}
       {isFiltered && filteredProds.length === 0 && (
         <div className="not-found-filters">Совпадений не найдено</div>
@@ -163,6 +166,7 @@ const Products = () => {
           ))}
         </ul>
       )}
+
       <Modal
         isOpen={isModalParamsOpen}
         onClose={() => setModalParamsOpen(false)}

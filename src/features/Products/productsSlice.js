@@ -32,10 +32,7 @@ const productsSlice = createSlice({
       state.products.forEach(prod => {
         if (prod.vendor === action.payload) {
           prod.isFavorite = !prod.isFavorite;
-          localStorage.setItem(
-            'productsIsFavorite',
-            JSON.stringify({ products: [...state.products] }),
-          );
+          localStorage.setItem('productsIsFavorite', JSON.stringify([...state.products]));
         }
       });
 
@@ -53,10 +50,7 @@ const productsSlice = createSlice({
         state.favoriteProducts.push(favoriteProduct);
       }
 
-      localStorage.setItem(
-        'favoriteProducts',
-        JSON.stringify({ favoriteProducts: state.favoriteProducts }),
-      );
+      localStorage.setItem('favoriteProducts', JSON.stringify([...state.favoriteProducts]));
     },
   },
   extraReducers: builder => {

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Mary-Gore/Your_shop/static/css/main.9a4c827f.css",
-    "main.js": "/Mary-Gore/Your_shop/static/js/main.2080d1d0.js",
+    "main.js": "/Mary-Gore/Your_shop/static/js/main.acc70afc.js",
     "static/media/Lato-SemiBold.woff": "/Mary-Gore/Your_shop/static/media/Lato-SemiBold.3fbc0479f2bc6cf315eb.woff",
     "static/media/Lato-Bold.woff": "/Mary-Gore/Your_shop/static/media/Lato-Bold.38460a841f9f02bac0ef.woff",
     "static/media/Lato-Medium.woff": "/Mary-Gore/Your_shop/static/media/Lato-Medium.179b3ab0c231813df7cc.woff",
@@ -25,10 +25,10 @@
     "static/media/iconPlus.svg": "/Mary-Gore/Your_shop/static/media/iconPlus.6662625be284270e3ac44991b54370ea.svg",
     "static/media/iconMinus.svg": "/Mary-Gore/Your_shop/static/media/iconMinus.727a7247b125b7134fb050a6fc720706.svg",
     "main.9a4c827f.css.map": "/Mary-Gore/Your_shop/static/css/main.9a4c827f.css.map",
-    "main.2080d1d0.js.map": "/Mary-Gore/Your_shop/static/js/main.2080d1d0.js.map"
+    "main.acc70afc.js.map": "/Mary-Gore/Your_shop/static/js/main.acc70afc.js.map"
   },
   "entrypoints": [
     "static/css/main.9a4c827f.css",
-    "static/js/main.2080d1d0.js"
+    "static/js/main.acc70afc.js"
   ]
 }

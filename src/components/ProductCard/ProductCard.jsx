@@ -31,7 +31,7 @@ const ProductsCard = ({ prod, handleModal, handleFavorite, vendor }) => {
           }
         >
           <div className="product-card__img-wrap">
-            <img src={`/img/products/${prod.preview}`} alt="product img" />
+            <img src={`img/products/${prod.preview}`} alt="product img" />
           </div>
         </Link>
 

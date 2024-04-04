@@ -61,7 +61,7 @@ const Product = () => {
                 {product.detailsImgs.map((src, index) => (
                   <SwiperSlide key={index}>
                     <div className="preview-slider__img-wrap">
-                      <img src={`img/products/${src}`} alt="product img" />
+                      <img src={`../../img/products/${src}`} alt="product img" />
                     </div>
                   </SwiperSlide>
                 ))}
@@ -91,7 +91,7 @@ const Product = () => {
                 product.detailsImgs.map((src, index) => (
                   <SwiperSlide key={index}>
                     <SwiperSlide className="main-slider__slide">
-                      <img src={`img/products/${src}`} alt="product img" />
+                      <img src={`../../img/products/${src}`} alt="product img" />
                     </SwiperSlide>
                   </SwiperSlide>
                 ))}
@@ -99,7 +99,7 @@ const Product = () => {
               {(!product.detailsImgs || product.detailsImgs.length === 0) && (
                 <SwiperSlide>
                   <SwiperSlide className="main-slider__slide">
-                    <img src={`img/products/${product.img}`} alt="product img" />
+                    <img src={`../../img/products/${product.img}`} alt="product img" />
                   </SwiperSlide>
                 </SwiperSlide>
               )}

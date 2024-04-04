@@ -8,7 +8,7 @@ import FavoriteProducts from './components/FavoriteProducts/FavoriteProducts';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="https://mary-gore.github.io/">
+      <BrowserRouter basename={'/Your_shop'}>
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route path="/:audience?/:prod_category?" element={<Catalog />} />

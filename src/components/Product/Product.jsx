@@ -99,7 +99,7 @@ const Product = () => {
               {(!product.detailsImgs || product.detailsImgs.length === 0) && (
                 <SwiperSlide>
                   <SwiperSlide className="main-slider__slide">
-                    <img src={`/img/products/${product.img}`} alt="product img" />
+                    <img src={`img/products/${product.img}`} alt="product img" />
                   </SwiperSlide>
                 </SwiperSlide>
               )}

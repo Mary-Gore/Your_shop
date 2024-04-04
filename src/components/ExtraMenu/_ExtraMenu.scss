@@ -8,6 +8,10 @@
 
     &:not(:last-child) {
       margin-right: 45px;
+
+      @include mobile-s {
+        margin-bottom: 15px;
+      }
     }
 
     &_active {
@@ -17,5 +21,9 @@
 
   @include tablet {
     margin-top: 15px;
+  }
+
+  @include mobile-s {
+    flex-direction: column;
   }
 }

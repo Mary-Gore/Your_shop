@@ -61,7 +61,7 @@ const Product = () => {
                 {product.detailsImgs.map((src, index) => (
                   <SwiperSlide key={index}>
                     <div className="preview-slider__img-wrap">
-                      <img src={`/img/products/${src}`} alt="product img" />
+                      <img src={`img/products/${src}`} alt="product img" />
                     </div>
                   </SwiperSlide>
                 ))}

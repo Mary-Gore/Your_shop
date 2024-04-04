@@ -52,7 +52,7 @@ const Cart = () => {
               <div className="cart__img-item-wrap">
                 <img
                   className="cart__img-item"
-                  src={`/img/products/${cartItem.img}`}
+                  src={`img/products/${cartItem.img}`}
                   alt="product img"
                 />
               </div>

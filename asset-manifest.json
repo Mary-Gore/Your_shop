@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Your_shop/static/css/main.bda377ea.css",
+    "main.css": "/Your_shop/static/css/main.bcd6ee9d.css",
     "main.js": "/Your_shop/static/js/main.6292645a.js",
     "static/media/Lato-SemiBold.woff": "/Your_shop/static/media/Lato-SemiBold.3fbc0479f2bc6cf315eb.woff",
     "static/media/Lato-Bold.woff": "/Your_shop/static/media/Lato-Bold.38460a841f9f02bac0ef.woff",
@@ -24,11 +24,11 @@
     "static/media/iconCheck.svg": "/Your_shop/static/media/iconCheck.0f0195f91d96dc964aa4.svg",
     "static/media/iconPlus.svg": "/Your_shop/static/media/iconPlus.6662625be284270e3ac44991b54370ea.svg",
     "static/media/iconMinus.svg": "/Your_shop/static/media/iconMinus.727a7247b125b7134fb050a6fc720706.svg",
-    "main.bda377ea.css.map": "/Your_shop/static/css/main.bda377ea.css.map",
+    "main.bcd6ee9d.css.map": "/Your_shop/static/css/main.bcd6ee9d.css.map",
     "main.6292645a.js.map": "/Your_shop/static/js/main.6292645a.js.map"
   },
   "entrypoints": [
-    "static/css/main.bda377ea.css",
+    "static/css/main.bcd6ee9d.css",
     "static/js/main.6292645a.js"
   ]
 }

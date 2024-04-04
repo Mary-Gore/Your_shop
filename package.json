@@ -1,7 +1,7 @@
 {
   "name": "my-shop",
   "version": "0.1.0",
-  "homepage": "https://github.com/Mary-Gore/Your_shop",
+  "homepage": "https://mary-gore.github.io/Your_shop/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",

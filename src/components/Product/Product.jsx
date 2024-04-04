@@ -91,7 +91,7 @@ const Product = () => {
                 product.detailsImgs.map((src, index) => (
                   <SwiperSlide key={index}>
                     <SwiperSlide className="main-slider__slide">
-                      <img src={`/img/products/${src}`} alt="product img" />
+                      <img src={`img/products/${src}`} alt="product img" />
                     </SwiperSlide>
                   </SwiperSlide>
                 ))}

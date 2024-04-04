@@ -14,4 +14,8 @@
       color: $darkGray;
     }
   }
+
+  @include tablet {
+    margin-top: 15px;
+  }
 }

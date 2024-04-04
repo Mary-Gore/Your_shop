@@ -16,4 +16,9 @@
   .crumb-link_active {
     color: $lightGrayText;
   }
+
+  @include tablet {
+    margin-left: 0;
+    margin-top: 15px;
+  }
 }

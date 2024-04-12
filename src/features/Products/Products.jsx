@@ -37,7 +37,6 @@ const Products = () => {
     [sizeModal, setSizeModal] = useState(''),
     [colorModal, setColorModal] = useState('');
 
-  console.log(products);
   useEffect(() => {
     const storageProds = JSON.parse(localStorage.getItem('productsIsFavorite'));
     if (!storageProds) {

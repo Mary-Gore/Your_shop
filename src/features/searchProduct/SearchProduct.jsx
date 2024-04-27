@@ -1,21 +1,27 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectSearchProduct, setSearchProduct } from './searchProductSlice';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSearchProduct } from './searchProductSlice';
 
 const SearchProduct = () => {
-  const searchProduct = useSelector(selectSearchProduct),
-    dispatch = useDispatch();
+  const dispatch = useDispatch(),
+    [search, setSearch] = useState('');
 
   const onSearchHandler = e => {
-    dispatch(setSearchProduct(e.target.value));
+    setSearch(e.target.value);
   };
+
+  const onSearchSubmitHandler = e => {
+    e.preventDefault();
+    dispatch(setSearchProduct(search));
+  };
+
   return (
     <div className="search-form-wrap">
-      <form id="search-form" className="search-form">
+      <form role="search" id="search-form" className="search-form" onSubmit={onSearchSubmitHandler}>
         <button className="search-form__btn" type="submit"></button>
         <input
           className="search-form__input"
-          value={searchProduct}
+          value={search}
           onChange={onSearchHandler}
           type="search"
           placeholder="Найти..."

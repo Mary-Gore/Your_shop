@@ -14,6 +14,7 @@ import {
   selectFilteredColorsBase,
   removeAllColors,
 } from '../filter/filterSlice';
+import { selectSearchTitle } from '../searchProduct/searchProductSlice';
 // Components
 import Modal from '../../components/UI/Modal/Modal';
 // My icons
@@ -24,6 +25,7 @@ const Products = () => {
   const products = useSelector(selectProducts),
     isLoading = useSelector(selectIsLoading),
     isFiltered = useSelector(selectIsFiltered),
+    searchTitle = useSelector(selectSearchTitle),
     dispatch = useDispatch(),
     categories = useParams(),
     audience = categories.audience,
@@ -91,7 +93,8 @@ const Products = () => {
     let audienceFilter = product.audience === audience,
       prodCatFilter = product.category === prodCategory,
       brandFilter = false,
-      colorFilter = false;
+      colorFilter = false,
+      titleFilter = true;
 
     if (isFiltered) {
       if (filteredBrandsBase.length !== 0) {
@@ -123,7 +126,13 @@ const Products = () => {
       colorFilter = true;
     }
 
-    return audienceFilter && prodCatFilter && brandFilter && colorFilter;
+    if (searchTitle !== '') {
+      titleFilter = product.title.toLowerCase().includes(searchTitle.trim().toLowerCase());
+    } else {
+      titleFilter = true;
+    }
+
+    return audienceFilter && prodCatFilter && brandFilter && colorFilter && titleFilter;
   });
 
   const addToCartHandler = (product, color, size) => {

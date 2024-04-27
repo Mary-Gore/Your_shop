@@ -2,13 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const searchProductSlice = createSlice({
   name: 'searchProduct',
-  initialState: '',
+  initialState: {
+    searchTitle: '',
+  },
   reducers: {
     setSearchProduct: (state, action) => {
-      return action.payload;
+      state.searchTitle = action.payload;
     },
     clearSearchProduct: state => {
-      return '';
+      state.searchTitle = '';
     },
   },
 });
@@ -20,4 +22,4 @@ export default searchProductSlice.reducer;
 export const { setSearchProduct, clearSearchProduct } = searchProductSlice.actions;
 
 //Selectors
-export const selectSearchProduct = state => state.searchProduct;
+export const selectSearchTitle = state => state.searchProduct.searchTitle;

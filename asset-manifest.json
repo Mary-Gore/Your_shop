@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Your_shop/static/css/main.ee4a6dda.css",
-    "main.js": "/Your_shop/static/js/main.6292645a.js",
+    "main.css": "/Your_shop/static/css/main.f63543d0.css",
+    "main.js": "/Your_shop/static/js/main.b8d56390.js",
     "static/media/Lato-SemiBold.woff": "/Your_shop/static/media/Lato-SemiBold.3fbc0479f2bc6cf315eb.woff",
     "static/media/Lato-Bold.woff": "/Your_shop/static/media/Lato-Bold.38460a841f9f02bac0ef.woff",
     "static/media/Lato-Medium.woff": "/Your_shop/static/media/Lato-Medium.179b3ab0c231813df7cc.woff",
@@ -24,11 +24,11 @@
     "static/media/iconCheck.svg": "/Your_shop/static/media/iconCheck.0f0195f91d96dc964aa4.svg",
     "static/media/iconPlus.svg": "/Your_shop/static/media/iconPlus.6662625be284270e3ac44991b54370ea.svg",
     "static/media/iconMinus.svg": "/Your_shop/static/media/iconMinus.727a7247b125b7134fb050a6fc720706.svg",
-    "main.ee4a6dda.css.map": "/Your_shop/static/css/main.ee4a6dda.css.map",
-    "main.6292645a.js.map": "/Your_shop/static/js/main.6292645a.js.map"
+    "main.f63543d0.css.map": "/Your_shop/static/css/main.f63543d0.css.map",
+    "main.b8d56390.js.map": "/Your_shop/static/js/main.b8d56390.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee4a6dda.css",
-    "static/js/main.6292645a.js"
+    "static/css/main.f63543d0.css",
+    "static/js/main.b8d56390.js"
   ]
 }
